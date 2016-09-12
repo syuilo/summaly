@@ -7,6 +7,24 @@ Installation
 ------------
 `$ npm install webcard`
 
+Usage
+-----
+`(url: string, opts: Options) => Promise<string>`
+
+### Options
+| Property  | Type     | Description                               | Default |
+| :-------- | :------- | :---------------------------------------- | :------ |
+| **proxy** | *string* | URL of proxy that wrap non-https contents | `null`  |
+
+### Example
+``` javascript
+import webcard from 'webcard';
+
+const html = await webcard('http://example.com', {
+  proxy: 'https://your.proxy.com'
+});
+```
+
 License
 -------
 [MIT](LICENSE)
