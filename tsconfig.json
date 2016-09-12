@@ -1,0 +1,34 @@
+{
+	"compilerOptions": {
+		"noEmitOnError": true,
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"declaration": true,
+		"sourceMap": false,
+		"target": "es6",
+		"module": "commonjs",
+		"removeComments": false,
+		"noLib": false,
+		"outDir": "built",
+		"rootDir": "src"
+	},
+	"compileOnSave": false,
+	"atom": {
+		"rewriteTsconfig": true
+	},
+	"filesGlob": [
+		"./node_modules/typescript/lib/lib.es6.d.ts",
+		"./typings/bundle.d.ts",
+		"./src/**/*.ts"
+	],
+	"files": [
+		"./node_modules/typescript/lib/lib.es6.d.ts",
+		"./typings/bundle.d.ts",
+		"./src/index.ts",
+		"./src/iplugin.ts",
+		"./src/options.ts",
+		"./src/general/index.ts",
+		"./src/plugins/wikipedia/index.ts"
+	]
+}
