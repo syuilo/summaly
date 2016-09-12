@@ -1,6 +1,6 @@
 {
   "name": "webcard",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Generate an html of any web page's summary",
   "author": "syuilo <i@syuilo.com>",
   "license": "MIT",
