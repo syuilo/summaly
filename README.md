@@ -9,7 +9,7 @@ Installation
 
 Usage
 -----
-`(url: string, opts: Options) => Promise<string>`
+`(url: string, options: Options) => Promise<string>`
 
 ### Options
 | Property  | Type     | Description                               | Default |
