@@ -95,7 +95,7 @@ export default async (url: URL.Url, opts: Options): Promise<string> => {
 	});
 
 	function proxy(url: string): string {
-		return `${opts.proxy}/${url}`;
+		return opts.proxy ? `${opts.proxy}/${url}` : url;
 	}
 }
 
