@@ -29,6 +29,7 @@
 		"./src/iplugin.ts",
 		"./src/options.ts",
 		"./src/general/index.ts",
-		"./src/plugins/wikipedia/index.ts"
+		"./src/plugins/wikipedia/index.ts",
+		"./src/plugins/soundcloud/index.ts"
 	]
 }

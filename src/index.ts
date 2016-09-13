@@ -8,7 +8,8 @@ require('babel-core/register');
 require('babel-polyfill');
 
 const plugins: IPlugin[] = [
-	require('./plugins/wikipedia')
+	require('./plugins/wikipedia'),
+	require('./plugins/soundcloud')
 ];
 
 export default async (url: string, options?: Options): Promise<string> => {
