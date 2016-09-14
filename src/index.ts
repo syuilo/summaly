@@ -9,7 +9,8 @@ require('babel-polyfill');
 
 const plugins: IPlugin[] = [
 	require('./plugins/wikipedia'),
-	require('./plugins/soundcloud')
+	require('./plugins/soundcloud'),
+	require('./plugins/youtube')
 ];
 
 export default async (url: string, options?: Options): Promise<string> => {
