@@ -26,11 +26,9 @@
 		"./node_modules/typescript/lib/lib.es6.d.ts",
 		"./typings/bundle.d.ts",
 		"./src/index.ts",
+		"./src/isummary.ts",
 		"./src/iplugin.ts",
-		"./src/options.ts",
-		"./src/general/index.ts",
-		"./src/plugins/wikipedia/index.ts",
-		"./src/plugins/youtube/index.ts",
-		"./src/plugins/soundcloud/index.ts"
+		"./src/general.ts",
+		"./src/plugins/wikipedia.ts"
 	]
 }

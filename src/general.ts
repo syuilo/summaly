@@ -1,7 +1,5 @@
 import * as URL from 'url';
 import * as request from 'request';
-const pug = require('pug');
-import Options from '../options';
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -10,7 +8,7 @@ const client = require('cheerio-httpcli');
 client.referer = false;
 client.timeout = 10000;
 
-export default async (url: URL.Url, opts: Options): Promise<string> => {
+export default async (url: URL.Url): Promise<any> => {
 	const res = await client.fetch(url.href);
 
 	if (res.error) {
@@ -52,7 +50,7 @@ export default async (url: URL.Url, opts: Options): Promise<string> => {
 		$('link[rel="apple-touch-icon"]').attr('href') ||
 		$('link[rel="apple-touch-icon image_src"]').attr('href');
 
-	image = image ? proxy(URL.resolve(url.href, image)) : null;
+	image = image ? URL.resolve(url.href, image) : null;
 
 	let description =
 		$('meta[property="misskey:summary"]').attr('content') ||
@@ -81,22 +79,15 @@ export default async (url: URL.Url, opts: Options): Promise<string> => {
 		$('link[rel="icon"]').attr('href') ||
 		'/favicon.ico';
 
-	icon = icon ? proxy(URL.resolve(url.href, icon)) : null;
+	icon = icon ? URL.resolve(url.href, icon) : null;
 
-	return pug.renderFile(`${__dirname}/summary.pug`, {
-		url: url,
+	return {
 		title: title,
 		icon: icon,
-		lang: lang,
 		description: description,
-		type: type,
-		image: image,
-		siteName: siteName
-	});
-
-	function proxy(url: string): string {
-		return opts.proxy ? `${opts.proxy}/${url}` : url;
-	}
+		thumbnail: image,
+		sitename: siteName
+	};
 }
 
 function promisifyRequest(request: any): (x: any) => Promise<any> {

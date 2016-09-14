@@ -1,9 +1,9 @@
 import * as URL from 'url';
-import Options from './options';
+import ISummary from './isummary';
 
 interface IPlugin {
 	test: (url: URL.Url) => boolean;
-	compile: (url: URL.Url, opts: Options) => Promise<string>;
+	summary: (url: URL.Url) => Promise<ISummary>;
 }
 
 export default IPlugin;

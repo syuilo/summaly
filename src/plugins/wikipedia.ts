@@ -1,6 +1,5 @@
 import * as URL from 'url';
-const pug = require('pug');
-import Options from '../../options';
+import ISummary from '../isummary';
 
 const client = require('cheerio-httpcli');
 client.referer = false;
@@ -10,7 +9,7 @@ exports.test = (url: URL.Url) => {
 	return /\.wikipedia\.org$/.test(url.hostname);
 };
 
-exports.compile = async (url: URL.Url, opts: Options) => {
+exports.summary = async (url: URL.Url) => {
 	const res = await client.fetch(url.href);
 	const $: any = res.$;
 
@@ -20,12 +19,11 @@ exports.compile = async (url: URL.Url, opts: Options) => {
 		? $('#mw-content-text > p:first-of-type').text()
 		: $('#bodyContent > div:first-of-type > p:first-of-type').text();
 
-	return pug.renderFile(`${__dirname}/../../general/summary.pug`, {
-		url: url,
+	return {
 		title: decodeURI(url.pathname.split('/')[2]),
 		icon: 'https://wikipedia.org/static/favicon/wikipedia.ico',
 		description: text,
-		image: `https://wikipedia.org/static/images/project-logos/${lang}wiki.png`,
-		siteName: 'Wikipedia'
-	});
+		thumbnail: `https://wikipedia.org/static/images/project-logos/${lang}wiki.png`,
+		sitename: 'Wikipedia'
+	};
 };

@@ -1,28 +1,21 @@
-webcard
+summaly
 =======
 
-Generate an html of any web page's summary.
+Get any web page's summary.
 
 Installation
 ------------
-`$ npm install webcard`
+`$ npm install summaly`
 
 Usage
 -----
-`(url: string, options: Options) => Promise<string>`
-
-### Options
-| Property  | Type     | Description                               | Default |
-| :-------- | :------- | :---------------------------------------- | :------ |
-| **proxy** | *string* | URL of proxy that wrap non-https contents | `null`  |
+`(url: string) => Promise<string>`
 
 ### Example
 ``` javascript
-import webcard from 'webcard';
+import summaly from 'summaly';
 
-const html = await webcard('http://example.com', {
-  proxy: 'https://your.proxy.com'
-});
+const info = await summaly('http://example.com');
 ```
 
 License

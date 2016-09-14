@@ -1,11 +1,11 @@
 {
-  "name": "webcard",
-  "version": "0.0.1",
-  "description": "Generate an html of any web page's summary",
+  "name": "summaly",
+  "version": "1.0.0",
+  "description": "Get web page's summary",
   "author": "syuilo <i@syuilo.com>",
   "license": "MIT",
-  "repository": "https://github.com/syuilo/webcard.git",
-  "bugs": "https://github.com/syuilo/webcard/issues",
+  "repository": "https://github.com/syuilo/summaly.git",
+  "bugs": "https://github.com/syuilo/summaly/issues",
   "main": "./built/index.js",
   "typings": "./built/index.d.ts",
   "scripts": {
@@ -25,8 +25,6 @@
     "babel-core": "6.13.2",
     "babel-polyfill": "6.13.0",
     "cheerio-httpcli": "^0.6.9",
-    "html-entities": "^1.2.0",
-    "pug": "^2.0.0-beta6",
     "request": "^2.74.0"
   }
 }
