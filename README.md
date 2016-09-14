@@ -1,6 +1,8 @@
 summaly
 =======
 
+[![][npm-badge]][npm-link]
+
 Get any web page's summary.
 
 Installation
@@ -9,7 +11,15 @@ Installation
 
 Usage
 -----
-`(url: string) => Promise<string>`
+```
+(url: string) => Promise<{
+	title: string;
+	icon: string;
+	description: string;
+	thumbnail: string;
+	sitename: string;
+}>
+```
 
 ### Example
 ``` javascript
@@ -21,3 +31,6 @@ const info = await summaly('http://example.com');
 License
 -------
 [MIT](LICENSE)
+
+[npm-link]:  https://www.npmjs.com/package/summaly
+[npm-badge]: https://img.shields.io/npm/v/summaly.svg?style=flat-square
