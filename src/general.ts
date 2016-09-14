@@ -1,6 +1,8 @@
 import * as URL from 'url';
 import * as request from 'request';
 
+const escapeRegExp = require('escape-regexp');
+
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
 
@@ -25,7 +27,6 @@ export default async (url: URL.Url): Promise<any> => {
 	const $: any = res.$;
 
 	let title =
-		$('meta[property="misskey:title"]').attr('content') ||
 		$('meta[property="og:title"]').attr('content') ||
 		$('meta[property="twitter:title"]').attr('content') ||
 		$('title').text();
@@ -38,12 +39,7 @@ export default async (url: URL.Url): Promise<any> => {
 
 	const lang: string = $('html').attr('lang');
 
-	const type =
-		$('meta[property="misskey:type"]').attr('content') ||
-		$('meta[property="og:type"]').attr('content');
-
 	let image =
-		$('meta[property="misskey:image"]').attr('content') ||
 		$('meta[property="og:image"]').attr('content') ||
 		$('meta[property="twitter:image"]').attr('content') ||
 		$('link[rel="image_src"]').attr('href') ||
@@ -53,7 +49,6 @@ export default async (url: URL.Url): Promise<any> => {
 	image = image ? URL.resolve(url.href, image) : null;
 
 	let description =
-		$('meta[property="misskey:summary"]').attr('content') ||
 		$('meta[property="og:description"]').attr('content') ||
 		$('meta[property="twitter:description"]').attr('content') ||
 		$('meta[name="description"]').attr('content');
@@ -67,19 +62,20 @@ export default async (url: URL.Url): Promise<any> => {
 	}
 
 	let siteName =
-		$('meta[property="misskey:site-name"]').attr('content') ||
 		$('meta[property="og:site_name"]').attr('content') ||
-		$('meta[name="application-name"]').attr('content');
+		$('meta[name="application-name"]').attr('content') ||
+		url.hostname;
 
 	siteName = siteName ? entities.decode(siteName) : null;
 
 	let icon =
-		$('meta[property="misskey:site-icon"]').attr('content') ||
 		$('link[rel="shortcut icon"]').attr('href') ||
 		$('link[rel="icon"]').attr('href') ||
 		'/favicon.ico';
 
 	icon = icon ? URL.resolve(url.href, icon) : null;
+
+	title = title.replace(new RegExp(`[\-\|:]?${escapeRegExp(siteName)}$`));
 
 	return {
 		title: title,
