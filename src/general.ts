@@ -75,7 +75,12 @@ export default async (url: URL.Url): Promise<any> => {
 
 	icon = icon ? URL.resolve(url.href, icon) : null;
 
-	title = title.replace(new RegExp(`\s?[\-\|:]?\s?${escapeRegExp(siteName)}$`), '').trim();
+	title = title.replace(new RegExp(`${escapeRegExp(siteName)}$`), '').trim();
+	title = title.replace(/[\-\|:]$/, '').trim();
+
+	if (title == '') {
+		title = siteName;
+	}
 
 	return {
 		title: title,
