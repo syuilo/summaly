@@ -10,7 +10,9 @@ const client = require('cheerio-httpcli');
 client.referer = false;
 client.timeout = 10000;
 
-export default async (url: URL.Url): Promise<any> => {
+import ISummary from './isummary';
+
+export default async (url: URL.Url): Promise<ISummary> => {
 	const res = await client.fetch(url.href);
 
 	if (res.error) {
