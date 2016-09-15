@@ -17,7 +17,7 @@ exports.summary = async (url: URL.Url) => {
 	const isDesktop = !/\.m\.wikipedia\.org$/.test(url.hostname);
 	const text: string = isDesktop
 		? $('#mw-content-text > p:first-of-type').text()
-		: $('#bodyContent > div:first-of-type > p:first-of-type').text();
+		: $('#mw-content-text > div:first-of-type > p:first-of-type').text();
 
 	return {
 		title: decodeURI(url.pathname.split('/')[2]),
