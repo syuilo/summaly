@@ -5,9 +5,8 @@ const client = require('cheerio-httpcli');
 client.referer = false;
 client.timeout = 10000;
 
-exports.test = (url: URL.Url) => {
-	return /\.wikipedia\.org$/.test(url.hostname);
-};
+exports.test = (url: URL.Url) =>
+	/\.wikipedia\.org$/.test(url.hostname);
 
 exports.summary = async (url: URL.Url) => {
 	const res = await client.fetch(url.href);
