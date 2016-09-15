@@ -29,6 +29,7 @@
 		"./src/isummary.ts",
 		"./src/iplugin.ts",
 		"./src/general.ts",
-		"./src/plugins/wikipedia.ts"
+		"./src/plugins/wikipedia.ts",
+		"./src/plugins/amazon.ts"
 	]
 }
