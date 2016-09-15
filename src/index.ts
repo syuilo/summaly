@@ -17,9 +17,13 @@ export default async (url: string): Promise<ISummary> => {
 
 	const plugin = plugins.filter(plugin => plugin.test(_url))[0];
 
-	if (plugin) {
-		return await plugin.summary(_url);
-	} else {
-		return await general(_url);
-	}
+	const summary = plugin
+		? await plugin.summary(_url)
+		: await general(_url);
+	
+	Object.keys(summary).forEach(k => {
+		(<any>summary)[k] = (<any>summary)[k].trim();
+	});
+
+	return summary;
 }
