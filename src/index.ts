@@ -20,9 +20,14 @@ export default async (url: string): Promise<ISummary> => {
 	const summary = plugin
 		? await plugin.summary(_url)
 		: await general(_url);
-	
+
 	Object.keys(summary).forEach(k => {
-		(<any>summary)[k] = (<any>summary)[k].trim();
+		if ((<any>summary)[k]) {
+			(<any>summary)[k] = (<any>summary)[k].trim();
+			if ((<any>summary)[k] == '') {
+				(<any>summary)[k] = null;
+			}
+		}
 	});
 
 	return summary;
