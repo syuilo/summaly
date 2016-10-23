@@ -1,6 +1,6 @@
 {
   "name": "summaly",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Get web page's summary",
   "author": "syuilo <i@syuilo.com>",
   "license": "MIT",
@@ -13,16 +13,16 @@
     "build": "gulp build"
   },
   "devDependencies": {
-    "babel-preset-es2015": "6.13.2",
-    "babel-preset-stage-3": "6.11.0",
+    "babel-preset-es2015": "6.16.0",
+    "babel-preset-stage-3": "6.17.0",
     "event-stream": "3.3.4",
     "gulp": "3.9.1",
     "gulp-babel": "6.1.2",
-    "gulp-typescript": "2.13.6",
-    "typescript": "1.8.10"
+    "gulp-typescript": "3.0.2",
+    "typescript": "2.0.3"
   },
   "dependencies": {
-    "babel-core": "6.13.2",
+    "babel-core": "6.17.0",
     "babel-polyfill": "6.13.0",
     "cheerio-httpcli": "0.6.9",
     "escape-regexp": "0.0.1",

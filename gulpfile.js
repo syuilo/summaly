@@ -15,14 +15,15 @@ gulp.task('build', [
 gulp.task('build:ts', () => {
 	const tsResult = project
 		.src()
-		.pipe(ts(project))
-		.pipe(babel({
-			presets: ['es2015', 'stage-3']
-		}));
+		.pipe(project());
 
 	return es.merge(
-		tsResult.pipe(gulp.dest('./built/'))/*,
-		tsResult.dts.pipe(gulp.dest('./built/'))*/
+		tsResult.js
+			.pipe(babel({
+				presets: ['es2015', 'stage-3']
+			}))
+			.pipe(gulp.dest('./built/')),
+		tsResult.dts.pipe(gulp.dest('./built/'))
 	);
 });
 
