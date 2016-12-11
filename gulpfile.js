@@ -7,12 +7,7 @@ const es = require('event-stream');
 
 const project = ts.createProject('tsconfig.json');
 
-gulp.task('build', [
-	'build:ts',
-	'build:copy'
-]);
-
-gulp.task('build:ts', () => {
+gulp.task('build', () => {
 	const tsResult = project
 		.src()
 		.pipe(project());
@@ -24,13 +19,5 @@ gulp.task('build:ts', () => {
 			}))
 			.pipe(gulp.dest('./built/')),
 		tsResult.dts.pipe(gulp.dest('./built/'))
-	);
-});
-
-gulp.task('build:copy', () => {
-	return es.merge(
-		gulp.src([
-			'./src/**/*.pug'
-		]).pipe(gulp.dest('./built/'))
 	);
 });
