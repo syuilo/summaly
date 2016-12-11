@@ -20,11 +20,11 @@ export default async (url: string): Promise<ISummary> => {
 	Object.keys(summary).forEach(k => {
 		if ((<any>summary)[k]) {
 			(<any>summary)[k] = (<any>summary)[k].trim();
-			if ((<any>summary)[k] == '') {
+			if ((<any>summary)[k] === '') {
 				(<any>summary)[k] = null;
 			}
 		}
 	});
 
 	return summary;
-}
+};
