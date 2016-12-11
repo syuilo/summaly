@@ -1,25 +1,24 @@
 import * as URL from 'url';
-import ISummary from '../isummary';
 
 const client = require('cheerio-httpcli');
 client.referer = false;
 client.timeout = 10000;
 
-exports.test = (url: URL.Url) => 
-	url.hostname == 'www.amazon.com' ||
-	url.hostname == 'www.amazon.co.jp' ||
-	url.hostname == 'www.amazon.ca' ||
-	url.hostname == 'www.amazon.com.br' ||
-	url.hostname == 'www.amazon.com.mx' ||
-	url.hostname == 'www.amazon.co.uk' ||
-	url.hostname == 'www.amazon.de' ||
-	url.hostname == 'www.amazon.fr' ||
-	url.hostname == 'www.amazon.it' ||
-	url.hostname == 'www.amazon.es' ||
-	url.hostname == 'www.amazon.nl' ||
-	url.hostname == 'www.amazon.cn' ||
-	url.hostname == 'www.amazon.in' ||
-	url.hostname == 'www.amazon.au'
+exports.test = (url: URL.Url) =>
+	url.hostname === 'www.amazon.com' ||
+	url.hostname === 'www.amazon.co.jp' ||
+	url.hostname === 'www.amazon.ca' ||
+	url.hostname === 'www.amazon.com.br' ||
+	url.hostname === 'www.amazon.com.mx' ||
+	url.hostname === 'www.amazon.co.uk' ||
+	url.hostname === 'www.amazon.de' ||
+	url.hostname === 'www.amazon.fr' ||
+	url.hostname === 'www.amazon.it' ||
+	url.hostname === 'www.amazon.es' ||
+	url.hostname === 'www.amazon.nl' ||
+	url.hostname === 'www.amazon.cn' ||
+	url.hostname === 'www.amazon.in' ||
+	url.hostname === 'www.amazon.au'
 ;
 
 exports.summary = async (url: URL.Url) => {

@@ -1,5 +1,4 @@
 import * as URL from 'url';
-import * as request from 'request';
 
 const escapeRegExp = require('escape-regexp');
 
@@ -33,13 +32,11 @@ export default async (url: URL.Url): Promise<ISummary> => {
 		$('meta[property="twitter:title"]').attr('content') ||
 		$('title').text();
 
-	if (title == null) {
+	if (title === undefined || title === null) {
 		return null;
 	}
 
 	title = clip(entities.decode(title), 100);
-
-	const lang: string = $('html').attr('lang');
 
 	let image =
 		$('meta[property="og:image"]').attr('content') ||
@@ -82,7 +79,7 @@ export default async (url: URL.Url): Promise<ISummary> => {
 		title = title.replace(/[\-—\|:]$/, '').trim();
 	}
 
-	if (title == '') {
+	if (title === '') {
 		title = siteName;
 	}
 
@@ -93,17 +90,7 @@ export default async (url: URL.Url): Promise<ISummary> => {
 		thumbnail: image,
 		sitename: siteName
 	};
-}
-
-function promisifyRequest(request: any): (x: any) => Promise<any> {
-	return (x: any) => {
-		return new Promise<any>((resolve) => {
-			request(x, (a: any, b: any, c: any) => {
-				resolve(c);
-			});
-		});
-	};
-}
+};
 
 function nullOrEmpty(val: string): boolean {
 	if (val === undefined) {

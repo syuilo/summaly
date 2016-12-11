@@ -1,5 +1,4 @@
 import * as URL from 'url';
-import ISummary from '../isummary';
 
 const client = require('cheerio-httpcli');
 client.referer = false;
