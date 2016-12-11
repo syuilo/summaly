@@ -14,22 +14,8 @@
 		"rootDir": "src"
 	},
 	"compileOnSave": false,
-	"atom": {
-		"rewriteTsconfig": true
-	},
-	"filesGlob": [
+	"include": [
 		"./node_modules/typescript/lib/lib.es6.d.ts",
-		"./typings/bundle.d.ts",
 		"./src/**/*.ts"
-	],
-	"files": [
-		"./node_modules/typescript/lib/lib.es6.d.ts",
-		"./typings/bundle.d.ts",
-		"./src/index.ts",
-		"./src/isummary.ts",
-		"./src/iplugin.ts",
-		"./src/general.ts",
-		"./src/plugins/wikipedia.ts",
-		"./src/plugins/amazon.ts"
 	]
 }
