@@ -3,10 +3,6 @@ import ISummary from './isummary';
 import IPlugin from './iplugin';
 import general from './general';
 
-// Init babel
-require('babel-core/register');
-require('babel-polyfill');
-
 const plugins: IPlugin[] = [
 	require('./plugins/amazon'),
 	require('./plugins/wikipedia')

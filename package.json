@@ -22,8 +22,6 @@
     "typescript": "2.0.3"
   },
   "dependencies": {
-    "babel-core": "6.17.0",
-    "babel-polyfill": "6.13.0",
     "cheerio-httpcli": "0.6.9",
     "escape-regexp": "0.0.1",
     "html-entities": "1.2.0",
