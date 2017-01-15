@@ -1,27 +1,23 @@
 import * as URL from 'url';
-
-const client = require('cheerio-httpcli');
-client.referer = false;
-client.timeout = 10000;
+import * as request from 'request';
 
 exports.test = (url: URL.Url) =>
 	/\.wikipedia\.org$/.test(url.hostname);
 
-exports.summary = async (url: URL.Url) => {
-	const res = await client.fetch(url.href);
-	const $: any = res.$;
+exports.summary = (url: URL.Url) => new Promise((res, rej) => {
+	const lang = url.host.split('.')[0];
+	const title = url.pathname.split('/')[2];
+	const endpoint = `https://${lang}.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=${title}`;
 
-	const lang = url.hostname.substr(0, url.hostname.indexOf('.'));
-	const isDesktop = !/\.m\.wikipedia\.org$/.test(url.hostname);
-	const text: string = isDesktop
-		? $('#mw-content-text > p:first-of-type').text()
-		: $('#mw-content-text > div:first-of-type > p:first-of-type').text();
-
-	return {
-		title: decodeURI(url.pathname.split('/')[2]),
-		icon: 'https://wikipedia.org/static/favicon/wikipedia.ico',
-		description: text,
-		thumbnail: `https://wikipedia.org/static/images/project-logos/${lang}wiki.png`,
-		sitename: 'Wikipedia'
-	};
-};
+	request(endpoint, (err, _, body) => {
+		body = JSON.parse(body);
+		const info = body.query.pages[Object.keys(body.query.pages)[0]];
+		res({
+			title: info.title,
+			icon: 'https://wikipedia.org/static/favicon/wikipedia.ico',
+			description: info.extract,
+			thumbnail: `https://wikipedia.org/static/images/project-logos/${lang}wiki.png`,
+			sitename: 'Wikipedia'
+		});
+	});
+});
