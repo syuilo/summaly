@@ -1,4 +1,5 @@
 import * as URL from 'url';
+import tracer from 'trace-redirect';
 import ISummary from './isummary';
 import IPlugin from './iplugin';
 import general from './general';
@@ -9,7 +10,9 @@ const plugins: IPlugin[] = [
 ];
 
 export default async (url: string): Promise<ISummary> => {
-	const _url = URL.parse(url, true);
+	const realUrl = await tracer(url);
+
+	const _url = URL.parse(realUrl, true);
 
 	const plugin = plugins.filter(plugin => plugin.test(_url))[0];
 
