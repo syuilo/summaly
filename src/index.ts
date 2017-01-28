@@ -10,9 +10,9 @@ const plugins: IPlugin[] = [
 ];
 
 export default async (url: string): Promise<ISummary> => {
-	const realUrl = await tracer(url);
+	const actualUrl = await tracer(url);
 
-	const _url = URL.parse(realUrl, true);
+	const _url = URL.parse(actualUrl, true);
 
 	const plugin = plugins.filter(plugin => plugin.test(_url))[0];
 
