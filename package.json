@@ -13,6 +13,7 @@
     "build": "gulp build"
   },
   "devDependencies": {
+    "@types/debug": "0.0.29",
     "@types/node": "7.0.4",
     "@types/request": "0.0.39",
     "event-stream": "3.3.4",
@@ -22,6 +23,7 @@
   },
   "dependencies": {
     "cheerio-httpcli": "0.6.10",
+    "debug": "2.6.0",
     "escape-regexp": "0.0.1",
     "html-entities": "1.2.0",
     "request": "2.79.0",
