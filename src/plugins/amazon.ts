@@ -4,8 +4,8 @@ const client = require('cheerio-httpcli');
 client.referer = false;
 client.timeout = 10000;
 
-exports.test = (url: URL.Url) =>
-	url.hostname === 'www.amazon.com' ||
+export function test (url: URL.Url) {
+	return url.hostname === 'www.amazon.com' ||
 	url.hostname === 'www.amazon.co.jp' ||
 	url.hostname === 'www.amazon.ca' ||
 	url.hostname === 'www.amazon.com.br' ||
@@ -19,9 +19,9 @@ exports.test = (url: URL.Url) =>
 	url.hostname === 'www.amazon.cn' ||
 	url.hostname === 'www.amazon.in' ||
 	url.hostname === 'www.amazon.au'
-;
+};
 
-exports.summary = async (url: URL.Url) => {
+export async function summary (url: URL.Url) {
 	const res = await client.fetch(url.href);
 	const $: any = res.$;
 

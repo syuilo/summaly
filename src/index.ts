@@ -4,9 +4,13 @@ import ISummary from './isummary';
 import IPlugin from './iplugin';
 import general from './general';
 
+/* plugins */
+import * as amazon from './plugins/amazon';
+import * as wikipedia from './plugins/wikipedia';
+
 const plugins: IPlugin[] = [
-	require('./plugins/amazon'),
-	require('./plugins/wikipedia')
+	amazon,
+	wikipedia
 ];
 
 export default async (url: string): Promise<ISummary> => {
