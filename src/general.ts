@@ -1,4 +1,5 @@
 import * as URL from 'url';
+import nullOrEmpty from './utils/null-or-empty';
 
 const escapeRegExp = require('escape-regexp');
 
@@ -91,29 +92,3 @@ export default async (url: URL.Url): Promise<ISummary> => {
 		sitename: siteName
 	};
 };
-
-function nullOrEmpty(val: string): boolean {
-	if (val === undefined) {
-		return true;
-	} else if (val === null) {
-		return true;
-	} else if (val.trim() === '') {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-function clip(s: string, max: number): string {
-	if (nullOrEmpty(s)) {
-		return s;
-	}
-
-	s = s.trim();
-
-	if (s.length > max) {
-		return s.substr(0, max) + '...';
-	} else {
-		return s;
-	}
-}
