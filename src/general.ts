@@ -1,4 +1,5 @@
 import * as URL from 'url';
+import * as request from 'request';
 import nullOrEmpty from './utils/null-or-empty';
 import clip from './utils/clip';
 
@@ -71,8 +72,27 @@ export default async (url: URL.Url): Promise<ISummary> => {
 
 	let icon =
 		$('link[rel="shortcut icon"]').attr('href') ||
-		$('link[rel="icon"]').attr('href') ||
-		'/favicon.ico';
+		$('link[rel="icon"]').attr('href');
+	
+	if (icon == null) {
+		const favicon = '/favicon.ico';
+
+		const foundFavicon = await new Promise(done => {
+			request.head(URL.resolve(url.href, favicon), (err, res) => {
+				if (err) {
+					done(false);
+				} else if (res.statusCode == 200) {
+					done(true);
+				} else {
+					done(false);
+				}
+			});
+		});
+
+		if (foundFavicon) {
+			icon = favicon;
+		}
+	}
 
 	icon = icon ? URL.resolve(url.href, icon) : null;
 
