@@ -1,6 +1,7 @@
 import * as URL from 'url';
 import * as request from 'request';
 import * as debug from 'debug';
+import clip from './../utils/clip';
 
 const log = debug('summaly:plugins:wikipedia');
 
@@ -25,7 +26,7 @@ export function summary (url: URL.Url) {
 			res({
 				title: info.title,
 				icon: 'https://wikipedia.org/static/favicon/wikipedia.ico',
-				description: info.extract,
+				description: clip(info.extract, 300),
 				thumbnail: `https://wikipedia.org/static/images/project-logos/${lang}wiki.png`,
 				sitename: 'Wikipedia'
 			});
