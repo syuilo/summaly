@@ -7,9 +7,8 @@
   "repository": "https://github.com/syuilo/summaly.git",
   "bugs": "https://github.com/syuilo/summaly/issues",
   "main": "./built/index.js",
-  "typings": "./built/index.d.ts",
+  "types": "./built/index.d.ts",
   "scripts": {
-    "start": "node ./built/index.js",
     "build": "gulp build"
   },
   "devDependencies": {
