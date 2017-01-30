@@ -4,31 +4,28 @@ import ISummary from './isummary';
 import IPlugin from './iplugin';
 import general from './general';
 
-/* plugins */
-import * as amazon from './plugins/amazon';
-import * as wikipedia from './plugins/wikipedia';
-
-const plugins: IPlugin[] = [
-	amazon,
-	wikipedia
-];
+const plugins: IPlugin[] = require('require-all')({
+	dirname: __dirname + '/plugins'
+});
 
 export default async (url: string): Promise<ISummary> => {
 	const actualUrl = await tracer(url);
 
 	const _url = URL.parse(actualUrl, true);
 
-	const plugin = plugins.filter(plugin => plugin.test(_url))[0];
+	const match = Object.keys(plugins)
+		.map(key => plugins[key])
+		.filter(plugin => plugin.test(_url))[0] as IPlugin;
 
-	const summary = plugin
-		? await plugin.summary(_url)
+	const summary = match
+		? await match.summary(_url)
 		: await general(_url);
 
 	Object.keys(summary).forEach(k => {
-		if ((<any>summary)[k]) {
-			(<any>summary)[k] = (<any>summary)[k].trim();
-			if ((<any>summary)[k] === '') {
-				(<any>summary)[k] = null;
+		if (summary[k]) {
+			summary[k] = summary[k].trim();
+			if (summary[k] === '') {
+				summary[k] = null;
 			}
 		}
 	});
