@@ -1,5 +1,6 @@
 import * as URL from 'url';
 import nullOrEmpty from './utils/null-or-empty';
+import clip from './utils/clip';
 
 const escapeRegExp = require('escape-regexp');
 
