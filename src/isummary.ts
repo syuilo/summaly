@@ -1,9 +1,9 @@
 interface ISummary {
-	title: string;
-	icon: string;
 	description: string;
-	thumbnail: string;
+	icon: string;
 	sitename: string;
+	thumbnail: string;
+	title: string;
 	url: string;
 }
 
