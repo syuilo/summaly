@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@types/debug": "0.0.29",
-    "@types/node": "7.0.4",
+    "@types/node": "7.0.5",
     "@types/request": "0.0.39",
     "event-stream": "3.3.4",
     "gulp": "3.9.1",
