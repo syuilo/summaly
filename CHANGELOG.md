@@ -1,3 +1,7 @@
+unreleased
+------------------
+* Add `url` property to result #15
+
 1.5.0 / 2017-01-31
 ------------------
 * Improve: Check favicon exist #7

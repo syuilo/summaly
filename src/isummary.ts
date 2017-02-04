@@ -4,6 +4,7 @@ interface ISummary {
 	description: string;
 	thumbnail: string;
 	sitename: string;
+	url: string;
 }
 
 export default ISummary;

@@ -45,5 +45,7 @@ export default async (url: string): Promise<ISummary> => {
 		}
 	});
 
-	return summary;
+	return Object.assign(summary, {
+		url: actualUrl
+	});
 };
