@@ -8,7 +8,7 @@ summaly
 
 [![NPM](https://nodei.co/npm/summaly.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/summaly)
 
-Get any web page's summary.
+Get any web page's summary. [Try it out](https://runkit.com/npm/summaly)
 
 Installation
 ------------
@@ -26,7 +26,7 @@ summaly(url[, opts])
 | **followRedirects** | *boolean* | リダイレクトを解決するかどうか | `true`  |
 
 ### Returns
-A Promise of an Object that contains below properties:
+A Promise of an Object that contains properties below:
 
 | Property        | Type     | Description                              |
 | :-------------- | :------- | :--------------------------------------- |
