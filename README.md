@@ -26,6 +26,8 @@ summaly(url[, opts])
 | **followRedirects** | *boolean* | リダイレクトを解決するかどうか | `true`  |
 
 ### Returns
+A Promise of an Object that contains below properties:
+
 | Property        | Type     | Description                              |
 | :-------------- | :------- | :--------------------------------------- |
 | **description** | *string* | The description of そのWebページ          |
