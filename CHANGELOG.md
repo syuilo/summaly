@@ -1,5 +1,6 @@
 unreleased
 ------------------
+* Add `followRedirects` option #16
 * Add `url` property to result #15
 
 1.5.0 / 2017-01-31

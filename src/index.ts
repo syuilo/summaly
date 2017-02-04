@@ -14,14 +14,26 @@ const plugins: IPlugin[] = require('require-all')({
 	dirname: __dirname + '/plugins'
 });
 
+export interface IOptions {
+	/**
+	 * リダイレクトを追跡するか否か
+	 */
+	followRedirects: boolean;
+}
+
 /**
  * Summary an web page
- * @param  {string}            url URL of web page you want to summary
- * @return {Promise<ISummary>}     Promised summary
+ * @param  {string}            url     URL of web page you want to summary
+ * @param  {IOptions}          options The options
+ * @return {Promise<ISummary>} Promised summary
  */
-export default async (url: string): Promise<ISummary> => {
+export default async (url: string, options: IOptions): Promise<ISummary> => {
+	const opts = Object.assign({
+		followRedirects: true
+	}, options);
+
 	// Follow redirects
-	const actualUrl = await tracer(url);
+	const actualUrl = opts.followRedirects ? await tracer(url) : url;
 
 	const _url = URL.parse(actualUrl, true);
 
