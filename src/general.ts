@@ -8,9 +8,9 @@ const escapeRegExp = require('escape-regexp');
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
 
-const client = require('cheerio-httpcli');
-client.referer = false;
-client.timeout = 10000;
+import * as client from 'cheerio-httpcli';
+client.set('referer', false);
+client.set('timeout', 10000);
 
 import ISummary from './isummary';
 
@@ -28,7 +28,7 @@ export default async (url: URL.Url): Promise<ISummary> => {
 		return null;
 	}
 
-	const $: any = res.$;
+	const $: client.CheerioStaticEx = res.$;
 
 	let title =
 		$('meta[property="og:title"]').attr('content') ||

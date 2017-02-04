@@ -1,8 +1,8 @@
 import * as URL from 'url';
 
-const client = require('cheerio-httpcli');
-client.referer = false;
-client.timeout = 10000;
+import * as client from 'cheerio-httpcli';
+client.set('referer', false);
+client.set('timeout', 10000);
 
 export function test (url: URL.Url) {
 	return url.hostname === 'www.amazon.com' ||
@@ -23,7 +23,7 @@ export function test (url: URL.Url) {
 
 export async function summary (url: URL.Url) {
 	const res = await client.fetch(url.href);
-	const $: any = res.$;
+	const $: client.CheerioStaticEx = res.$;
 
 	const title: string = $('#title').text();
 
