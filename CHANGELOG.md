@@ -1,5 +1,6 @@
 unreleased
 ------------------
+* Add user-defined plugin support #22
 * Add `followRedirects` option #16
 * Add `url` property to result #15
 

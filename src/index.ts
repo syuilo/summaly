@@ -4,33 +4,48 @@
  */
 
 import * as URL from 'url';
+import requireAll from 'require-all';
 import tracer from 'trace-redirect';
 import ISummary from './isummary';
 import IPlugin from './iplugin';
 import general from './general';
 
-// Load plugins
-const plugins: IPlugin[] = require('require-all')({
+// Load builtin plugins
+const builtinPlugins = requireAll({
 	dirname: __dirname + '/plugins'
-});
+}) as IPlugin[];
 
 export interface IOptions {
 	/**
 	 * リダイレクトを追跡するか否か
 	 */
-	followRedirects: boolean;
+	followRedirects?: boolean;
+
+	/**
+	 * Custom Plugins
+	 */
+	plugins?: IPlugin[];
 }
+
+type Result = ISummary & {
+	url: string;
+};
 
 /**
  * Summary an web page
- * @param  {string}            url     URL of web page you want to summary
- * @param  {IOptions}          options The options
- * @return {Promise<ISummary>} Promised summary
+ * @param  {string}          url     URL of web page you want to summary
+ * @param  {IOptions}        options The options
+ * @return {Promise<Result>} Promised summary
  */
-export default async (url: string, options: IOptions): Promise<ISummary> => {
+export default async (url: string, options: IOptions): Promise<Result> => {
 	const opts = Object.assign({
-		followRedirects: true
+		followRedirects: true,
+		plugins: null
 	}, options);
+
+	const plugins = Object.keys(builtinPlugins)
+		.map(key => builtinPlugins[key])
+		.concat(opts.plugins || []);
 
 	// Follow redirects
 	const actualUrl = opts.followRedirects ? await tracer(url) : url;
