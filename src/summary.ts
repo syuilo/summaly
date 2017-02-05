@@ -1,4 +1,4 @@
-interface ISummary {
+type Summary = {
 	description: string;
 	icon: string;
 	sitename: string;
@@ -6,4 +6,4 @@ interface ISummary {
 	title: string;
 }
 
-export default ISummary;
+export default Summary;
