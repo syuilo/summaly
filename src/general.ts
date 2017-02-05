@@ -14,7 +14,7 @@ client.set('timeout', 10000);
 
 import ISummary from './isummary';
 
-export default async (url: URL.Url) => {
+export default async (url: URL.Url): Promise<ISummary> => {
 	const res = await client.fetch(url.href);
 
 	if (res.error) {

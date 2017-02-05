@@ -13,7 +13,7 @@ import general from './general';
 // Load builtin plugins
 const builtinPlugins = requireAll({
 	dirname: __dirname + '/plugins'
-}) as IPlugin[];
+}) as { [key: string]: IPlugin };
 
 export interface IOptions {
 	/**
@@ -41,7 +41,7 @@ export default async (url: string, options: IOptions): Promise<Result> => {
 	const opts = Object.assign({
 		followRedirects: true,
 		plugins: null
-	}, options);
+	}, options) as IOptions;
 
 	const plugins = Object.keys(builtinPlugins)
 		.map(key => builtinPlugins[key])
@@ -53,9 +53,7 @@ export default async (url: string, options: IOptions): Promise<Result> => {
 	const _url = URL.parse(actualUrl, true);
 
 	// Find matching plugin
-	const match = Object.keys(plugins)
-		.map(key => plugins[key])
-		.filter(plugin => plugin.test(_url))[0] as IPlugin;
+	const match = plugins.filter(plugin => plugin.test(_url))[0];
 
 	// Get summary
 	const summary = match
