@@ -1,3 +1,7 @@
+unreleased
+------------------
+* Fix the incorrect type definition
+
 1.6.0 / 2017-02-05
 ------------------
 * Add user-defined plugin support #22
