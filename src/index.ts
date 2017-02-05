@@ -31,6 +31,9 @@ type Options = {
 };
 
 type Result = Summary & {
+	/**
+	 * The actual url of that web page
+	 */
 	url: string;
 };
 
