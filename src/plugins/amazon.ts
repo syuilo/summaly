@@ -23,11 +23,11 @@ export function test(url: URL.Url) {
 
 export async function summary(url: URL.Url) {
 	const res = await client.fetch(url.href);
-	const $: client.CheerioStaticEx = res.$;
+	const $ = res.$;
 
-	const title: string = $('#title').text();
+	const title = $('#title').text();
 
-	const description: string =
+	const description =
 		$('#productDescription').text() ||
 		$('meta[name="description"]').attr('content');
 

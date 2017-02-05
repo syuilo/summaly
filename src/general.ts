@@ -28,7 +28,7 @@ export default async (url: URL.Url): Promise<Summary> => {
 		return null;
 	}
 
-	const $: client.CheerioStaticEx = res.$;
+	const $ = res.$;
 
 	let title =
 		$('meta[property="og:title"]').attr('content') ||
