@@ -34,10 +34,10 @@ export async function summary(url: URL.Url) {
 	const thumbnail: string = $('#landingImage').attr('src');
 
 	return {
-		title: title,
+		title: title || null,
 		icon: 'https://www.amazon.com/favicon.ico',
-		description: description,
-		thumbnail: thumbnail,
+		description: description || null,
+		thumbnail: thumbnail || null,
 		sitename: 'Amazon'
 	};
 };

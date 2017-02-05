@@ -106,10 +106,10 @@ export default async (url: URL.Url): Promise<Summary> => {
 	}
 
 	return {
-		title: title,
-		icon: icon,
-		description: description,
-		thumbnail: image,
-		sitename: siteName
+		title: title || null,
+		icon: icon || null,
+		description: description || null,
+		thumbnail: image || null,
+		sitename: siteName || null
 	};
 };

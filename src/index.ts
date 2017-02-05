@@ -64,16 +64,6 @@ export default async (url: string, options: Options): Promise<Result> => {
 		? await match.summary(_url)
 		: await general(_url);
 
-	// Replace '' to null
-	Object.keys(summary).forEach(k => {
-		if (summary[k]) {
-			summary[k] = summary[k].trim();
-			if (summary[k] === '') {
-				summary[k] = null;
-			}
-		}
-	});
-
 	return Object.assign(summary, {
 		url: actualUrl
 	});
