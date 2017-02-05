@@ -4,7 +4,7 @@
  */
 
 import * as URL from 'url';
-import requireAll from 'require-all';
+import requireAll = require('require-all');
 import tracer from 'trace-redirect';
 import ISummary from './isummary';
 import IPlugin from './iplugin';
