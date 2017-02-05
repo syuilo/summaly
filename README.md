@@ -21,9 +21,18 @@ summaly(url[, opts])
 ```
 
 ### Options
-| Property            | Type      | Description                 | Default |
-| :------------------ | :-------- | :-------------------------- | :------ |
-| **followRedirects** | *boolean* | リダイレクトを解決するかどうか | `true`  |
+| Property            | Type                   | Description                 | Default |
+| :------------------ | :--------------------- | :-------------------------- | :------ |
+| **followRedirects** | *boolean*              | リダイレクトを解決するかどうか | `true`  |
+| **plugins**         | *plugin[] (see below)* | Custom plugins              | `null`  |
+
+#### Plugin
+``` typescript
+interface IPlugin {
+	test: (url: URL.Url) => boolean;
+	summary: (url: URL.Url) => Promise<ISummary>;
+}
+```
 
 ### Returns
 A Promise of an Object that contains properties below:
