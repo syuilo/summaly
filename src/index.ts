@@ -40,10 +40,10 @@ type Result = Summary & {
 /**
  * Summary an web page
  * @param  {string}          url     URL of web page you want to summary
- * @param  {Options}         options The options
+ * @param  {Options?}        options The options
  * @return {Promise<Result>} Promised summary
  */
-export default async (url: string, options: Options): Promise<Result> => {
+export default async (url: string, options?: Options): Promise<Result> => {
 	const opts = Object.assign({
 		followRedirects: true,
 		plugins: null
