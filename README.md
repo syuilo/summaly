@@ -24,7 +24,7 @@ summaly(url[, opts])
 | Property            | Type                   | Description                 | Default |
 | :------------------ | :--------------------- | :-------------------------- | :------ |
 | **followRedirects** | *boolean*              | リダイレクトを解決するかどうか | `true`  |
-| **plugins**         | *plugin[] (see below)* | Custom plugins              | `null`  |
+| **plugins**         | *plugin[]* (see below) | Custom plugins              | `null`  |
 
 #### Plugin
 ``` typescript
