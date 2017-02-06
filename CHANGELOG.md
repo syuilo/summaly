@@ -1,4 +1,4 @@
-unreleased
+1.6.1 / 2017-02-06
 ------------------
 * Fix the incorrect type definition
 
