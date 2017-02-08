@@ -60,7 +60,7 @@ export default async (url: string, options?: Options): Promise<Result> => {
 	const match = plugins.filter(plugin => plugin.test(_url))[0];
 
 	// Get summary
-	const summary = await (match ? match.summary : general)(_url);
+	const summary = await (match ? match.summarize : general)(_url);
 
 	return Object.assign(summary, {
 		url: actualUrl

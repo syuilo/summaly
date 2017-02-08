@@ -21,7 +21,7 @@ export function test(url: URL.Url) {
 	url.hostname === 'www.amazon.au'
 };
 
-export async function summary(url: URL.Url) {
+export async function summarize(url: URL.Url) {
 	const res = await client.fetch(url.href);
 	const $ = res.$;
 

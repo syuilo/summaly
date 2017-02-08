@@ -9,7 +9,7 @@ export function test(url: URL.Url) {
 	return /\.wikipedia\.org$/.test(url.hostname);
 };
 
-export function summary(url: URL.Url) {
+export function summarize(url: URL.Url) {
 	return new Promise((res, rej) => {
 		const lang = url.host.split('.')[0];
 		const title = url.pathname.split('/')[2];
