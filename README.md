@@ -65,6 +65,10 @@ console.log(summary); // will be ... ↓
 */
 ```
 
+Testing
+-------
+`npm run test`
+
 License
 -------
 [MIT](LICENSE)
