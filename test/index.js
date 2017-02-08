@@ -49,6 +49,19 @@ describe('OGP', () => {
 		});
 	});
 
+	it('site_name', done => {
+		const app = express();
+		app.use((req, res) => {
+			res.sendFile(__dirname + '/htmls/og-site_name.html');
+		});
+		const server = app.listen(80, async () => {
+			const summary = await summaly('http://localhost');
+			assert.equal(summary.sitename, 'Strawberry Pasta');
+			server.close();
+			done();
+		});
+	});
+
 	it('thumbnail', done => {
 		const app = express();
 		app.use((req, res) => {
