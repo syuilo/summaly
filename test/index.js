@@ -24,13 +24,27 @@ process.on('unhandledRejection', console.dir);
 
 describe('OGP', () => {
 	it('title', done => {
-		const server = express();
-		server.use((req, res) => {
+		const app = express();
+		app.use((req, res) => {
 			res.sendFile(__dirname + '/htmls/og-title.html');
 		});
-		server.listen(80, async () => {
+		const server = app.listen(80, async () => {
 			const summary = await summaly('http://localhost');
 			assert.equal(summary.title, 'Strawberry Pasta');
+			server.close();
+			done();
+		});
+	});
+
+	it('description', done => {
+		const app = express();
+		app.use((req, res) => {
+			res.sendFile(__dirname + '/htmls/og-description.html');
+		});
+		const server = app.listen(80, async () => {
+			const summary = await summaly('http://localhost');
+			assert.equal(summary.description, 'Strawberry Pasta');
+			server.close();
 			done();
 		});
 	});
