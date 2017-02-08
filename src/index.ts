@@ -37,6 +37,11 @@ type Result = Summary & {
 	url: string;
 };
 
+const defaultOptions = {
+	followRedirects: true,
+	plugins: null
+} as Options;
+
 /**
  * Summarize an web page
  * @param  {string}          url     URL of web page you want to summarize
@@ -44,10 +49,7 @@ type Result = Summary & {
  * @return {Promise<Result>} Promised summary
  */
 export default async (url: string, options?: Options): Promise<Result> => {
-	const opts = Object.assign({
-		followRedirects: true,
-		plugins: null
-	}, options) as Options;
+	const opts = Object.assign(defaultOptions, options);
 
 	const plugins = builtinPlugins.concat(opts.plugins || []);
 
