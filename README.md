@@ -30,7 +30,7 @@ summaly(url[, opts])
 ``` typescript
 interface IPlugin {
 	test: (url: URL.Url) => boolean;
-	summary: (url: URL.Url) => Promise<ISummary>;
+	summarize: (url: URL.Url) => Promise<Summary>;
 }
 ```
 
