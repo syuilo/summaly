@@ -30,7 +30,7 @@ describe('OGP', () => {
 		});
 		server.listen(80, async () => {
 			const summary = await summaly('http://localhost');
-			assert.equal(summary.title, 'KISS principle');
+			assert.equal(summary.title, 'Strawberry Pasta');
 			done();
 		});
 	});
