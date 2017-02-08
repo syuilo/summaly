@@ -48,4 +48,17 @@ describe('OGP', () => {
 			done();
 		});
 	});
+
+	it('thumbnail', done => {
+		const app = express();
+		app.use((req, res) => {
+			res.sendFile(__dirname + '/htmls/og-image.html');
+		});
+		const server = app.listen(80, async () => {
+			const summary = await summaly('http://localhost');
+			assert.equal(summary.thumbnail, 'https://himasaku.net/himasaku.png');
+			server.close();
+			done();
+		});
+	});
 });
