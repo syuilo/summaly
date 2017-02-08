@@ -1,5 +1,7 @@
 /node_modules
 /src
+/test
+README.md
 .gitignore
 npm-debug.log
 gulpfile.js
