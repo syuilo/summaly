@@ -38,8 +38,8 @@ type Result = Summary & {
 };
 
 /**
- * Summary an web page
- * @param  {string}          url     URL of web page you want to summary
+ * Summarize an web page
+ * @param  {string}          url     URL of web page you want to summarize
  * @param  {Options?}        options The options
  * @return {Promise<Result>} Promised summary
  */
