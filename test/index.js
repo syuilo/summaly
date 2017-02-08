@@ -20,6 +20,9 @@ process.env.NODE_ENV = 'test';
 // Display detail of unhandled promise rejection
 process.on('unhandledRejection', console.dir);
 
+const port = 3000;
+const host = `http://localhost:${port}`;
+
 /* tests below */
 
 describe('OGP', () => {
@@ -28,8 +31,8 @@ describe('OGP', () => {
 		app.use((req, res) => {
 			res.sendFile(__dirname + '/htmls/og-title.html');
 		});
-		const server = app.listen(80, async () => {
-			const summary = await summaly('http://localhost');
+		const server = app.listen(port, async () => {
+			const summary = await summaly(host);
 			assert.equal(summary.title, 'Strawberry Pasta');
 			server.close();
 			done();
@@ -41,8 +44,8 @@ describe('OGP', () => {
 		app.use((req, res) => {
 			res.sendFile(__dirname + '/htmls/og-description.html');
 		});
-		const server = app.listen(80, async () => {
-			const summary = await summaly('http://localhost');
+		const server = app.listen(port, async () => {
+			const summary = await summaly(host);
 			assert.equal(summary.description, 'Strawberry Pasta');
 			server.close();
 			done();
@@ -54,8 +57,8 @@ describe('OGP', () => {
 		app.use((req, res) => {
 			res.sendFile(__dirname + '/htmls/og-site_name.html');
 		});
-		const server = app.listen(80, async () => {
-			const summary = await summaly('http://localhost');
+		const server = app.listen(port, async () => {
+			const summary = await summaly(host);
 			assert.equal(summary.sitename, 'Strawberry Pasta');
 			server.close();
 			done();
@@ -67,8 +70,8 @@ describe('OGP', () => {
 		app.use((req, res) => {
 			res.sendFile(__dirname + '/htmls/og-image.html');
 		});
-		const server = app.listen(80, async () => {
-			const summary = await summaly('http://localhost');
+		const server = app.listen(port, async () => {
+			const summary = await summaly(host);
 			assert.equal(summary.thumbnail, 'https://himasaku.net/himasaku.png');
 			server.close();
 			done();
