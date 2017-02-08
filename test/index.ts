@@ -2,7 +2,7 @@
  * Tests!
  */
 
-import chai from 'chai';
+import * as chai from 'chai';
 import * as express from 'express';
 
 import summaly from '../';
