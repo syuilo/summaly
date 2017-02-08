@@ -12,12 +12,16 @@
     "build": "gulp build"
   },
   "devDependencies": {
+    "@types/chai": "3.4.34",
     "@types/debug": "0.0.29",
+    "@types/mocha": "2.2.39",
     "@types/node": "7.0.5",
     "@types/request": "0.0.39",
+    "chai": "3.5.0",
     "event-stream": "3.3.4",
     "gulp": "3.9.1",
     "gulp-typescript": "3.1.4",
+    "mocha": "3.2.0",
     "typescript": "2.1.5"
   },
   "dependencies": {
