@@ -33,7 +33,7 @@
     "debug": "2.6.1",
     "escape-regexp": "0.0.1",
     "html-entities": "1.2.0",
-    "request": "2.79.0",
+    "request": "2.80.0",
     "require-all": "2.2.0",
     "trace-redirect": "1.0.2-1"
   }
