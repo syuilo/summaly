@@ -1,3 +1,8 @@
+2.0.1 / 2017-03-11
+------------------
+* Update some dependencies
+* Some refactors
+
 2.0.0 / 2017-02-08
 ------------------
 * **[BREAKING CHANGE] Renamed: Plugins: Method `summary` is now `summarize`**
