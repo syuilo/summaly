@@ -1,15 +1,16 @@
 import * as URL from 'url';
 import * as request from 'request';
 import * as debug from 'debug';
+import summary from '../summary';
 import clip from './../utils/clip';
 
 const log = debug('summaly:plugins:wikipedia');
 
-export function test(url: URL.Url) {
+export function test(url: URL.Url): boolean {
 	return /\.wikipedia\.org$/.test(url.hostname);
 };
 
-export function summarize(url: URL.Url) {
+export function summarize(url: URL.Url): Promise<summary> {
 	return new Promise((res, rej) => {
 		const lang = url.host.split('.')[0];
 		const title = url.pathname.split('/')[2];

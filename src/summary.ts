@@ -23,6 +23,6 @@ type Summary = {
 	 * The title of that web page
 	 */
 	title: string;
-}
+};
 
 export default Summary;

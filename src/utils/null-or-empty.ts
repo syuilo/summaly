@@ -1,4 +1,4 @@
-export default function(val: string) {
+export default function(val: string): boolean {
 	if (val === undefined) {
 		return true;
 	} else if (val === null) {

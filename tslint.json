@@ -61,7 +61,7 @@
 		"radix": true,
 		"semicolon": true,
 		"switch-default": false,
-		"triple-equals": true,
+		"triple-equals": false,
 		"typedef": [true,
 			"call-signature",
 			"property-declaration"

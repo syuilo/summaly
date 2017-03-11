@@ -1,6 +1,6 @@
 import nullOrEmpty from './null-or-empty';
 
-export default function(s: string, max: number) {
+export default function(s: string, max: number): string {
 	if (nullOrEmpty(s)) {
 		return s;
 	}

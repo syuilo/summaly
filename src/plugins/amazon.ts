@@ -1,10 +1,11 @@
 import * as URL from 'url';
-
 import * as client from 'cheerio-httpcli';
+import summary from '../summary';
+
 client.set('referer', false);
 client.set('timeout', 10000);
 
-export function test(url: URL.Url) {
+export function test(url: URL.Url): boolean {
 	return url.hostname === 'www.amazon.com' ||
 	url.hostname === 'www.amazon.co.jp' ||
 	url.hostname === 'www.amazon.ca' ||
@@ -18,10 +19,10 @@ export function test(url: URL.Url) {
 	url.hostname === 'www.amazon.nl' ||
 	url.hostname === 'www.amazon.cn' ||
 	url.hostname === 'www.amazon.in' ||
-	url.hostname === 'www.amazon.au'
+	url.hostname === 'www.amazon.au';
 };
 
-export async function summarize(url: URL.Url) {
+export async function summarize(url: URL.Url): Promise<summary> {
 	const res = await client.fetch(url.href);
 	const $ = res.$;
 
