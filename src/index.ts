@@ -64,6 +64,10 @@ export default async (url: string, options?: Options): Promise<Result> => {
 	// Get summary
 	const summary = await (match ? match.summarize : general)(_url);
 
+	if (summary == null) {
+		throw 'failed summarize';
+	}
+
 	return Object.assign(summary, {
 		url: actualUrl
 	});

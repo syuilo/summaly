@@ -1,3 +1,7 @@
+2.0.2 / Unreleased
+------------------
+* Bug fix
+
 2.0.1 / 2017-03-11
 ------------------
 * Update some dependencies
