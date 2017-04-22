@@ -22,7 +22,7 @@
     "@types/node": "7.0.13",
     "@types/request": "0.0.42",
     "event-stream": "3.3.4",
-    "express": "4.14.1",
+    "express": "5.0.0-alpha.5",
     "gulp": "3.9.1",
     "gulp-typescript": "3.1.6",
     "mocha": "3.2.0",
