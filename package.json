@@ -25,7 +25,7 @@
     "express": "4.14.1",
     "gulp": "3.9.1",
     "gulp-typescript": "3.1.6",
-    "mocha": "3.2.0",
+    "mocha": "3.3.0",
     "typescript": "2.2.2"
   },
   "dependencies": {
