@@ -19,7 +19,7 @@
     "@types/event-stream": "3.3.31",
     "@types/gulp": "4.0.2",
     "@types/gulp-typescript": "0.0.33",
-    "@types/node": "7.0.13",
+    "@types/node": "7.0.14",
     "@types/request": "0.0.42",
     "event-stream": "3.3.4",
     "express": "4.14.1",
