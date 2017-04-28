@@ -18,7 +18,7 @@
     "@types/mocha": "2.2.40",
     "@types/event-stream": "3.3.31",
     "@types/gulp": "4.0.2",
-    "@types/gulp-typescript": "0.0.33",
+    "@types/gulp-typescript": "2.13.0",
     "@types/node": "7.0.14",
     "@types/request": "0.0.42",
     "event-stream": "3.3.4",
