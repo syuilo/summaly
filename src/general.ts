@@ -70,31 +70,37 @@ export default async (url: URL.Url): Promise<Summary> => {
 
 	siteName = siteName ? entities.decode(siteName) : null;
 
-	let icon =
+	const favicon =
 		$('link[rel="shortcut icon"]').attr('href') ||
-		$('link[rel="icon"]').attr('href');
+		$('link[rel="icon"]').attr('href') ||
+		'/favicon.ico'
 
-	if (icon == null) {
-		const favicon = '/favicon.ico';
-
-		const foundFavicon = await new Promise(done => {
-			request.head(URL.resolve(url.href, favicon), (err, res) => {
-				if (err) {
-					done(false);
-				} else if (res.statusCode == 200) {
-					done(true);
-				} else {
-					done(false);
-				}
-			});
+	const checkExistence = (checkURL: string): Promise<string> => new Promise(done => {
+		request.head(checkURL, (err, res) => {
+			if (err) {
+				done(null);
+			} else if (res.statusCode == 200) {
+				done(checkURL);
+			} else {
+				done(null);
+			}
 		});
+	});
 
-		if (foundFavicon) {
-			icon = favicon;
-		}
+	// 相対的なURL (ex. test) を絶対的 (ex. /test) に変換
+	const toAbsolute = (relativeURLString: string): string => {
+		const relativeURL = URL.parse(relativeURLString);
+		const isAbsolute = relativeURL.slashes || relativeURL.path.indexOf("/") === 0;
+		// 既に絶対的なら、即座に値を返却
+		if (isAbsolute) return relativeURLString;
+		// スラッシュを付けて返却
+		return "/" + relativeURLString;
 	}
 
-	icon = icon ? URL.resolve(url.href, icon) : null;
+	const icon = await checkExistence(URL.resolve(url.href, favicon)) ||
+		// 相対指定を絶対指定に変換し再試行
+		await checkExistence(URL.resolve(url.href, toAbsolute(favicon))) ||
+		null
 
 	if (/[\-—\|:]$/.test(title.replace(new RegExp(`${escapeRegExp(siteName)}$`), '').trim())) {
 		title = title.replace(new RegExp(`${escapeRegExp(siteName)}$`), '').trim();
