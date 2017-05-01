@@ -73,7 +73,7 @@ export default async (url: URL.Url): Promise<Summary> => {
 	const favicon =
 		$('link[rel="shortcut icon"]').attr('href') ||
 		$('link[rel="icon"]').attr('href') ||
-		'/favicon.ico'
+		'/favicon.ico';
 
 	const checkExistence = (checkURL: string): Promise<string> => new Promise(done => {
 		request.head(checkURL, (err, res) => {
@@ -95,7 +95,7 @@ export default async (url: URL.Url): Promise<Summary> => {
 		if (isAbsolute) return relativeURLString;
 		// スラッシュを付けて返却
 		return "/" + relativeURLString;
-	}
+	};
 
 	const icon = await checkExistence(URL.resolve(url.href, favicon)) ||
 		// 相対指定を絶対指定に変換し再試行
