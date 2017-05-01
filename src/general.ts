@@ -94,7 +94,7 @@ export default async (url: URL.Url): Promise<Summary> => {
 		}
 	}
 
-	icon = icon ? URL.resolve(url.href, icon) : null;
+	icon = icon || null;
 
 	if (/[\-—\|:]$/.test(title.replace(new RegExp(`${escapeRegExp(siteName)}$`), '').trim())) {
 		title = title.replace(new RegExp(`${escapeRegExp(siteName)}$`), '').trim();
