@@ -75,12 +75,13 @@ export default async (url: URL.Url): Promise<Summary> => {
 		$('link[rel="icon"]').attr('href') ||
 		'/favicon.ico';
 
-	const checkExistence = (checkURL: string): Promise<string> => new Promise(done => {
-		request.head(checkURL, (err, res) => {
+	const find = (path: string) => new Promise<string>(done => {
+		const target = URL.resolve(url.href, path);
+		request.head(target, (err, res) => {
 			if (err) {
 				done(null);
 			} else if (res.statusCode == 200) {
-				done(checkURL);
+				done(target);
 			} else {
 				done(null);
 			}
@@ -90,18 +91,19 @@ export default async (url: URL.Url): Promise<Summary> => {
 	// 相対的なURL (ex. test) を絶対的 (ex. /test) に変換
 	const toAbsolute = (relativeURLString: string): string => {
 		const relativeURL = URL.parse(relativeURLString);
-		const isAbsolute = relativeURL.slashes || relativeURL.path.indexOf("/") === 0;
+		const isAbsolute = relativeURL.slashes || relativeURL.path[0] === '/';
 		// 既に絶対的なら、即座に値を返却
 		if (isAbsolute) return relativeURLString;
 		// スラッシュを付けて返却
-		return "/" + relativeURLString;
+		return '/' + relativeURLString;
 	};
 
-	const icon = await checkExistence(URL.resolve(url.href, favicon)) ||
+	const icon = await find(favicon) ||
 		// 相対指定を絶対指定に変換し再試行
-		await checkExistence(URL.resolve(url.href, toAbsolute(favicon))) ||
-		null
+		await find(toAbsolute(favicon)) ||
+		null;
 
+	// Clean up the title
 	if (/[\-—\|:]$/.test(title.replace(new RegExp(`${escapeRegExp(siteName)}$`), '').trim())) {
 		title = title.replace(new RegExp(`${escapeRegExp(siteName)}$`), '').trim();
 		title = title.replace(/[\-—\|:]$/, '').trim();
