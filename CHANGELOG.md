@@ -1,3 +1,7 @@
+2.0.3 / unreleased
+------------------
+* Improve title cleanuping
+
 2.0.2 / 2017-05-04
 ------------------
 * Support more favicon cases #64

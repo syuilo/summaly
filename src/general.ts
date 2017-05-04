@@ -2,8 +2,7 @@ import * as URL from 'url';
 import * as request from 'request';
 import nullOrEmpty from './utils/null-or-empty';
 import clip from './utils/clip';
-
-const escapeRegExp = require('escape-regexp');
+import cleanupTitle from './utils/cleanup-title';
 
 import { AllHtmlEntities } from 'html-entities';
 const entities = new AllHtmlEntities();
@@ -104,10 +103,7 @@ export default async (url: URL.Url): Promise<Summary> => {
 		null;
 
 	// Clean up the title
-	if (/[\-—\|:]$/.test(title.replace(new RegExp(`${escapeRegExp(siteName)}$`), '').trim())) {
-		title = title.replace(new RegExp(`${escapeRegExp(siteName)}$`), '').trim();
-		title = title.replace(/[\-—\|:]$/, '').trim();
-	}
+	title = cleanupTitle(title, siteName);
 
 	if (title === '') {
 		title = siteName;
