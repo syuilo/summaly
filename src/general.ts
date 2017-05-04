@@ -5,8 +5,8 @@ import clip from './utils/clip';
 
 const escapeRegExp = require('escape-regexp');
 
-const Entities = require('html-entities').AllHtmlEntities;
-const entities = new Entities();
+import { AllHtmlEntities } from 'html-entities';
+const entities = new AllHtmlEntities();
 
 import * as client from 'cheerio-httpcli';
 client.set('referer', false);
