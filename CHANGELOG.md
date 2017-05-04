@@ -1,5 +1,7 @@
-2.0.2 / Unreleased
+2.0.2 / 2017-05-04
 ------------------
+* Support more favicon cases #64
+* Update some dependencies
 * Bug fix
 
 2.0.1 / 2017-03-11
