@@ -1,5 +1,5 @@
 summaly
-=======
+================================================================
 
 [![][npm-badge]][npm-link]
 [![][mit-badge]][mit]
@@ -12,20 +12,20 @@ summaly
 Get any web page's summary. [Try it out](https://runkit.com/npm/summaly)
 
 Installation
-------------
+----------------------------------------------------------------
 `$ npm install summaly`
 
 Usage
------
+----------------------------------------------------------------
 ``` javascript
 summaly(url[, opts])
 ```
 
 ### Options
-| Property            | Type                   | Description                 | Default |
-| :------------------ | :--------------------- | :-------------------------- | :------ |
-| **followRedirects** | *boolean*              | リダイレクトを解決するかどうか | `true`  |
-| **plugins**         | *plugin[]* (see below) | Custom plugins              | `null`  |
+| Property            | Type                   | Description              | Default |
+| :------------------ | :--------------------- | :----------------------- | :------ |
+| **followRedirects** | *boolean*              | Whether follow redirects | `true`  |
+| **plugins**         | *plugin[]* (see below) | Custom plugins           | `null`  |
 
 #### Plugin
 ``` typescript
@@ -40,12 +40,12 @@ A Promise of an Object that contains properties below:
 
 | Property        | Type     | Description                              |
 | :-------------- | :------- | :--------------------------------------- |
-| **description** | *string* | The description of そのWebページ          |
-| **icon**        | *string* | The url of the icon of そのWebページ      |
-| **sitename**    | *string* | The name of そのWebサイト                 |
-| **thumbnail**   | *string* | The url of the thumbnail of そのWebページ |
-| **title**       | *string* | The title of そのWebページ                |
-| **url**         | *string* | The url of そのWebページ                  |
+| **description** | *string* | The description of the web page          |
+| **icon**        | *string* | The url of the icon of the web page      |
+| **sitename**    | *string* | The name of the web site                 |
+| **thumbnail**   | *string* | The url of the thumbnail of the web page |
+| **title**       | *string* | The title of the web page                |
+| **url**         | *string* | The url of the web page                  |
 
 ### Example
 ``` javascript
@@ -67,11 +67,11 @@ console.log(summary); // will be ... ↓
 ```
 
 Testing
--------
+----------------------------------------------------------------
 `npm run test`
 
 License
--------
+----------------------------------------------------------------
 [MIT](LICENSE)
 
 [npm-link]:       https://www.npmjs.com/package/summaly
