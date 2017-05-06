@@ -20,7 +20,7 @@ const builtinPlugins = Object.keys(_builtinPlugins)
 
 type Options = {
 	/**
-	 * リダイレクトを追跡するか否か
+	 * Whether follow redirects
 	 */
 	followRedirects?: boolean;
 
