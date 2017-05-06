@@ -1,4 +1,4 @@
-2.0.3 / unreleased
+2.0.3 / 2017-05-06
 ------------------
 * Improve title cleanuping
 

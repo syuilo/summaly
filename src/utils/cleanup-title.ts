@@ -9,11 +9,12 @@ export default function(title: string, siteName?: string): string {
 		const x = escapeRegExp(siteName);
 
 		const patterns = [
-			`^(.+?)\s?[\-\|:・]\s?${x}$`
-		].map(p => new RegExp(p));
+			`^(.+?)\\s?[\\-\\|:・]\\s?${x}$`
+		];
 
 		for (let i = 0; i < patterns.length; i++) {
-			const [, match] = patterns[i].exec(title);
+			const pattern = new RegExp(patterns[i]);
+			const [, match] = pattern.exec(title) || [null, null];
 			if (match) return match;
 		}
 	}
