@@ -24,7 +24,7 @@
     "typescript": "2.3.2"
   },
   "dependencies": {
-    "cheerio-httpcli": "0.6.11",
+    "cheerio-httpcli": "0.7.0",
     "debug": "2.6.6",
     "escape-regexp": "0.0.1",
     "html-entities": "1.2.1",
