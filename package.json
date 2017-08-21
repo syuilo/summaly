@@ -15,7 +15,7 @@
   "devDependencies": {
     "@types/debug": "0.0.29",
     "@types/express": "4.0.36",
-    "@types/html-entities": "1.2.15",
+    "@types/html-entities": "1.2.16",
     "@types/mocha": "2.2.41",
     "@types/node": "8.0.4",
     "@types/request": "0.0.45",
