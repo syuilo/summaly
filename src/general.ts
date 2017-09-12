@@ -91,8 +91,12 @@ export default async (url: URL.Url): Promise<Summary> => {
 	const toAbsolute = (relativeURLString: string): string => {
 		const relativeURL = URL.parse(relativeURLString);
 		const isAbsolute = relativeURL.slashes || relativeURL.path[0] === '/';
+
 		// 既に絶対的なら、即座に値を返却
-		if (isAbsolute) return relativeURLString;
+		if (isAbsolute) {
+			return relativeURLString;
+		}
+
 		// スラッシュを付けて返却
 		return '/' + relativeURLString;
 	};
