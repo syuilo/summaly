@@ -30,6 +30,6 @@
     "html-entities": "1.2.1",
     "request": "2.83.0",
     "require-all": "2.2.0",
-    "trace-redirect": "1.0.4"
+    "trace-redirect": "1.0.5"
   }
 }
