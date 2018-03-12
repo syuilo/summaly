@@ -28,7 +28,7 @@
     "debug": "3.1.0",
     "escape-regexp": "0.0.1",
     "html-entities": "1.2.1",
-    "request": "2.83.0",
+    "request": "2.84.0",
     "require-all": "2.2.0",
     "trace-redirect": "1.0.4"
   }
