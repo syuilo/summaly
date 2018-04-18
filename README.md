@@ -1,6 +1,8 @@
 summaly
 ================================================================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/syuilo/summaly.svg)](https://greenkeeper.io/)
+
 [![][npm-badge]][npm-link]
 [![][mit-badge]][mit]
 [![][travis-badge]][travis-link]
