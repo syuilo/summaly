@@ -1,3 +1,7 @@
+2.0.4 / 2018-04-18
+------------------
+* Dependencies update
+
 2.0.3 / 2017-05-06
 ------------------
 * Improve title cleanuping
