@@ -44,17 +44,13 @@ const defaultOptions = {
 
 /**
  * Summarize an web page
- * @param  {string}          url     URL of web page you want to summarize
- * @param  {Options?}        options The options
- * @return {Promise<Result>} Promised summary
  */
 export default async (url: string, options?: Options): Promise<Result> => {
 	const opts = Object.assign(defaultOptions, options);
 
 	const plugins = builtinPlugins.concat(opts.plugins || []);
 
-	// Follow redirects
-	const actualUrl = opts.followRedirects ? await tracer(url) : url;
+	const actualUrl = opts.followRedirects ? await tracer(url).catch(() => url) : url;
 
 	const _url = URL.parse(actualUrl, true);
 
