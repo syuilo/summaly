@@ -49,6 +49,9 @@ export default async (url: URL.Url): Promise<Summary> => {
 
 	image = image ? URL.resolve(url.href, image) : null;
 
+	const player =
+		$('meta[property="twitter:player"]').attr('content');
+
 	let description =
 		$('meta[property="og:description"]').attr('content') ||
 		$('meta[property="twitter:description"]').attr('content') ||
@@ -118,6 +121,7 @@ export default async (url: URL.Url): Promise<Summary> => {
 		icon: icon || null,
 		description: description || null,
 		thumbnail: image || null,
+		player: player || null,
 		sitename: siteName || null
 	};
 };
