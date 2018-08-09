@@ -13,7 +13,7 @@ export function test(url: URL.Url): boolean {
 export async function summarize(url: URL.Url): Promise<summary> {
 	const lang = url.host.split('.')[0];
 	const title = url.pathname.split('/')[2];
-	const endpoint = `https://${lang}.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=${encodeURIComponent(title)}`;
+	const endpoint = `https://${lang}.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=${title}`;
 
 	log(`lang is ${lang}`);
 	log(`title is ${title}`);
