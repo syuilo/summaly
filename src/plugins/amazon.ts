@@ -39,6 +39,7 @@ export async function summarize(url: URL.Url): Promise<summary> {
 		icon: 'https://www.amazon.com/favicon.ico',
 		description: description || null,
 		thumbnail: thumbnail || null,
+		player: null,
 		sitename: 'Amazon'
 	};
 }
