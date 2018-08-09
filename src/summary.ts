@@ -20,6 +20,11 @@ type Summary = {
 	thumbnail: string;
 
 	/**
+	 * The url of the player of that web page
+	 */
+	player: string;
+
+	/**
 	 * The title of that web page
 	 */
 	title: string;
