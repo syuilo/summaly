@@ -20,7 +20,7 @@ export function test(url: URL.Url): boolean {
 	url.hostname === 'www.amazon.cn' ||
 	url.hostname === 'www.amazon.in' ||
 	url.hostname === 'www.amazon.au';
-};
+}
 
 export async function summarize(url: URL.Url): Promise<summary> {
 	const res = await client.fetch(url.href);
@@ -39,6 +39,7 @@ export async function summarize(url: URL.Url): Promise<summary> {
 		icon: 'https://www.amazon.com/favicon.ico',
 		description: description || null,
 		thumbnail: thumbnail || null,
+		player: null,
 		sitename: 'Amazon'
 	};
-};
+}
