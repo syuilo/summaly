@@ -1,3 +1,8 @@
+2.1.0 / 2018-08-09
+------------------
+* Add twitter:player support
+* Dependency updates
+
 2.0.6 / 2018-05-18
 ------------------
 * Fix bug
