@@ -51,7 +51,8 @@ export default async (url: URL.Url): Promise<Summary> => {
 	image = image ? URL.resolve(url.href, image) : null;
 
 	const player =
-		$('meta[property="twitter:player"]').attr('content');
+		$('meta[property="twitter:player"]').attr('content') ||
+		$('meta[name="twitter:player"]').attr('content');
 
 	let description =
 		$('meta[property="og:description"]').attr('content') ||
