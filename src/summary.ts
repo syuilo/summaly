@@ -36,17 +36,17 @@ type Player = {
 	/**
 	 * The url of the player
 	 */
-	player: string;
+	url: string;
 
 	/**
 	 * The width of the player
 	 */
-	playerWidth: number;
+	width: number;
 
 	/**
 	 * The height of the player
 	 */
-	playerHeight: number;
+	height: number;
 };
 
 export default Player;
