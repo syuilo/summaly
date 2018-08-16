@@ -49,4 +49,4 @@ type Player = {
 	height: number;
 };
 
-export default Player;
+export Player;
