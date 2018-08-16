@@ -34,7 +34,11 @@ export async function summarize(url: URL.Url): Promise<summary> {
 		icon: 'https://wikipedia.org/static/favicon/wikipedia.ico',
 		description: clip(info.extract, 300),
 		thumbnail: `https://wikipedia.org/static/images/project-logos/${lang}wiki.png`,
-		player: null,
+		player: {
+			url: null,
+			width: null,
+			height: null
+		},
 		sitename: 'Wikipedia'
 	};
 }
