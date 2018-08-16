@@ -32,7 +32,7 @@ type Summary = {
 
 export default Summary;
 
-type Player = {
+export type Player = {
 	/**
 	 * The url of the player
 	 */
@@ -48,5 +48,3 @@ type Player = {
 	 */
 	height: number;
 };
-
-export Player;
