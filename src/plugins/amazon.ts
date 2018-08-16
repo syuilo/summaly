@@ -1,7 +1,11 @@
+import { name, version } from '../../package.json';
 import * as URL from 'url';
 import * as client from 'cheerio-httpcli';
 import summary from '../summary';
 
+client.set('headers', {
+  'User-Agent': `${name}/${version}`
+});
 client.set('referer', false);
 client.set('timeout', 10000);
 
