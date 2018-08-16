@@ -24,12 +24,14 @@ summaly(url[, opts])
 ```
 
 ### Options
+
 | Property            | Type                   | Description              | Default |
 | :------------------ | :--------------------- | :----------------------- | :------ |
 | **followRedirects** | *boolean*              | Whether follow redirects | `true`  |
 | **plugins**         | *plugin[]* (see below) | Custom plugins           | `null`  |
 
 #### Plugin
+
 ``` typescript
 interface IPlugin {
 	test: (url: URL.Url) => boolean;
@@ -38,7 +40,10 @@ interface IPlugin {
 ```
 
 ### Returns
+
 A Promise of an Object that contains properties below:
+
+#### Root
 
 | Property        | Type     | Description                              |
 | :-------------- | :------- | :--------------------------------------- |
@@ -46,11 +51,20 @@ A Promise of an Object that contains properties below:
 | **icon**        | *string* | The url of the icon of the web page      |
 | **sitename**    | *string* | The name of the web site                 |
 | **thumbnail**   | *string* | The url of the thumbnail of the web page |
-| **player**      | *string* | The url of the player of the web page    |
+| **player**      | *Player* | The player of the web page               |
 | **title**       | *string* | The title of the web page                |
 | **url**         | *string* | The url of the web page                  |
 
+#### Player
+
+| Property        | Type     | Description                              |
+| :-------------- | :------- | :--------------------------------------- |
+| **url**         | *string* | The url of the player                    |
+| **width**       | *number* | The width of the player                  |
+| **height**      | *number* | The height of the player                 |
+
 ### Example
+
 ``` javascript
 import summaly from 'summaly';
 
@@ -63,7 +77,11 @@ console.log(summary); // will be ... ↓
 	icon: 'http://livedoor.blogimg.jp/tmg24news/imgs/9/5/favicon.ico',
 	description: '1：以下、名無しにかわりましてVIPがお送りします：2013/03/30(土) 14:57:29.09 ID:An34eOmY0モバＰ「反論が あるやつもいるかもしれない」    モバＰ「だが俺の主張も聞いてほしい！　お漏らしさせるならありすが一番だ！」    日菜子「むふふ……いきなりそんなことを大声で',
 	thumbnail: 'http://livedoor.blogimg.jp/tmg24news/imgs/8/d/8df6e1a0-s.jpg',
-	player: null
+	player: {
+		url: null,
+		width: null,
+		height: null
+	}
 	sitename: 'エレファント速報：SSまとめブログ',
 	url: 'http://elephant.2chblog.jp/archives/52025138.html'
 }
