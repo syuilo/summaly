@@ -54,6 +54,14 @@ export default async (url: URL.Url): Promise<Summary> => {
 		$('meta[property="twitter:player"]').attr('content') ||
 		$('meta[name="twitter:player"]').attr('content');
 
+	const playerWidth = parseInt(
+		$('meta[property="twitter:player:width"]').attr('content') ||
+		$('meta[name="twitter:player:width"]').attr('content'));
+
+	const playerHeight = parseInt(
+		$('meta[property="twitter:player:height"]').attr('content') ||
+		$('meta[name="twitter:player:height"]').attr('content'));
+
 	let description =
 		$('meta[property="og:description"]').attr('content') ||
 		$('meta[property="twitter:description"]').attr('content') ||
