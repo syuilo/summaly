@@ -20,19 +20,9 @@ type Summary = {
 	thumbnail: string;
 
 	/**
-	 * The url of the player of that web page
+	 * The player of that web page
 	 */
-	player: string;
-
-	/**
-	 * The width of the player of that web page
-	 */
-	playerWidth: number;
-
-	/**
-	 * The height of the player of that web page
-	 */
-	playerHeight: number;
+	player: Player;
 
 	/**
 	 * The title of that web page
@@ -41,3 +31,22 @@ type Summary = {
 };
 
 export default Summary;
+
+type Player = {
+	/**
+	 * The url of the player
+	 */
+	player: string;
+
+	/**
+	 * The width of the player
+	 */
+	playerWidth: number;
+
+	/**
+	 * The height of the player
+	 */
+	playerHeight: number;
+};
+
+export default Player;
