@@ -1,4 +1,4 @@
 declare module 'package.json' {
-  export name: string;
-  export version: string;
+  export const name: string;
+  export const version: string;
 }
