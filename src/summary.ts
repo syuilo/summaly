@@ -25,6 +25,16 @@ type Summary = {
 	player: string;
 
 	/**
+	 * The width of the player of that web page
+	 */
+	playerWidth: number;
+
+	/**
+	 * The height of the player of that web page
+	 */
+	playerHeight: number;
+
+	/**
 	 * The title of that web page
 	 */
 	title: string;
