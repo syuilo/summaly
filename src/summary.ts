@@ -20,9 +20,9 @@ type Summary = {
 	thumbnail: string;
 
 	/**
-	 * The url of the player of that web page
+	 * The player of that web page
 	 */
-	player: string;
+	player: Player;
 
 	/**
 	 * The title of that web page
@@ -31,3 +31,20 @@ type Summary = {
 };
 
 export default Summary;
+
+export type Player = {
+	/**
+	 * The url of the player
+	 */
+	url: string;
+
+	/**
+	 * The width of the player
+	 */
+	width: number;
+
+	/**
+	 * The height of the player
+	 */
+	height: number;
+};

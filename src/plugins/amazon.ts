@@ -1,7 +1,11 @@
+import { name, version } from '../../package.json';
 import * as URL from 'url';
 import * as client from 'cheerio-httpcli';
 import summary from '../summary';
 
+client.set('headers', {
+  'User-Agent': `${name}/${version}`
+});
 client.set('referer', false);
 client.set('timeout', 10000);
 
@@ -34,12 +38,28 @@ export async function summarize(url: URL.Url): Promise<summary> {
 
 	const thumbnail: string = $('#landingImage').attr('src');
 
+	const playerUrl =
+		$('meta[property="twitter:player"]').attr('content') ||
+		$('meta[name="twitter:player"]').attr('content');
+
+	const playerWidth = parseInt(
+		$('meta[property="twitter:player:width"]').attr('content') ||
+		$('meta[name="twitter:player:width"]').attr('content'));
+
+	const playerHeight = parseInt(
+		$('meta[property="twitter:player:height"]').attr('content') ||
+		$('meta[name="twitter:player:height"]').attr('content'));
+
 	return {
 		title: title || null,
 		icon: 'https://www.amazon.com/favicon.ico',
 		description: description || null,
 		thumbnail: thumbnail || null,
-		player: null,
+		player: {
+			url: playerUrl || null,
+			width: playerWidth || null,
+			height: playerHeight || null
+		},
 		sitename: 'Amazon'
 	};
 }

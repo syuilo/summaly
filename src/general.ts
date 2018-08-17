@@ -1,3 +1,4 @@
+import { name, version } from '../package.json';
 import * as URL from 'url';
 import * as request from 'request';
 import nullOrEmpty from './utils/null-or-empty';
@@ -8,6 +9,9 @@ import { AllHtmlEntities } from 'html-entities';
 const entities = new AllHtmlEntities();
 
 import * as client from 'cheerio-httpcli';
+client.set('headers', {
+  'User-Agent': `${name}/${version}`
+});
 client.set('referer', false);
 client.set('timeout', 10000);
 client.set('maxDataSize', 1024 * 1024);
@@ -50,9 +54,17 @@ export default async (url: URL.Url): Promise<Summary> => {
 
 	image = image ? URL.resolve(url.href, image) : null;
 
-	const player =
+	const playerUrl =
 		$('meta[property="twitter:player"]').attr('content') ||
 		$('meta[name="twitter:player"]').attr('content');
+
+	const playerWidth = parseInt(
+		$('meta[property="twitter:player:width"]').attr('content') ||
+		$('meta[name="twitter:player:width"]').attr('content'));
+
+	const playerHeight = parseInt(
+		$('meta[property="twitter:player:height"]').attr('content') ||
+		$('meta[name="twitter:player:height"]').attr('content'));
 
 	let description =
 		$('meta[property="og:description"]').attr('content') ||
@@ -123,7 +135,11 @@ export default async (url: URL.Url): Promise<Summary> => {
 		icon: icon || null,
 		description: description || null,
 		thumbnail: image || null,
-		player: player || null,
+		player: {
+			url: playerUrl || null,
+			width: playerWidth || null,
+			height: playerHeight || null
+		},
 		sitename: siteName || null
 	};
 };
