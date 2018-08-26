@@ -68,7 +68,7 @@ A Promise of an Object that contains properties below:
 ``` javascript
 import summaly from 'summaly';
 
-const summary = await summaly('http://elephant.2chblog.jp/archives/52025138.html');
+const summary = await summaly('https://www.youtube.com/watch?v=NMIEAhH_fTU');
 
 console.log(summary); // will be ... ↓
 /*
