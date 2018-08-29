@@ -1,6 +1,6 @@
 {
   "name": "summaly",
-  "version": "2.1.4",
+  "version": "2.2.0",
   "description": "Get web page's summary",
   "author": "syuilo <i@syuilo.com>",
   "license": "MIT",
@@ -13,22 +13,23 @@
     "test": "mocha --harmony"
   },
   "devDependencies": {
-    "@types/express": "4.16.0",
     "@types/debug": "0.0.30",
+    "@types/express": "4.16.0",
     "@types/html-entities": "1.2.16",
     "@types/mocha": "5.2.2",
-    "@types/request": "2.47.1",
     "@types/node": "10.3.4",
+    "@types/request": "2.47.1",
     "@types/request-promise-native": "1.0.15",
     "express": "4.16.3",
-    "typescript": "2.9.2",
-    "mocha": "5.2.0"
+    "mocha": "5.2.0",
+    "typescript": "2.9.2"
   },
   "dependencies": {
     "cheerio-httpcli": "0.7.3",
     "debug": "3.1.0",
     "escape-regexp": "0.0.1",
     "html-entities": "1.2.1",
+    "koa": "2.5.2",
     "request": "2.87.0",
     "request-promise-native": "1.0.5",
     "require-all": "2.2.0",
