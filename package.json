@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "cheerio-httpcli": "0.7.3",
-    "debug": "3.1.0",
+    "debug": "3.2.2",
     "escape-regexp": "0.0.1",
     "html-entities": "1.2.1",
     "koa": "2.5.2",
