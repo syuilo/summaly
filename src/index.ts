@@ -20,6 +20,11 @@ const builtinPlugins = Object.keys(_builtinPlugins)
 
 type Options = {
 	/**
+	 * Accept-Language for the request
+	 */
+	lang?: string;
+
+	/**
 	 * Whether follow redirects
 	 */
 	followRedirects?: boolean;
@@ -38,6 +43,7 @@ type Result = Summary & {
 };
 
 const defaultOptions = {
+	lang: null,
 	followRedirects: true,
 	plugins: null
 } as Options;
@@ -58,7 +64,7 @@ export default async (url: string, options?: Options): Promise<Result> => {
 	const match = plugins.filter(plugin => plugin.test(_url))[0];
 
 	// Get summary
-	const summary = await (match ? match.summarize : general)(_url);
+	const summary = await (match ? match.summarize : general)(_url, opts.lang);
 
 	if (summary == null) {
 		throw 'failed summarize';

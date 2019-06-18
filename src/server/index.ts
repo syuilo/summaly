@@ -12,6 +12,7 @@ app.use(async ctx => {
 
 	try {
 		const summary = await summaly(ctx.query.url, {
+			lang: ctx.query.lang,
 			followRedirects: false
 		});
 
