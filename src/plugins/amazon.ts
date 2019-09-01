@@ -8,6 +8,7 @@ client.set('headers', {
 });
 client.set('referer', false);
 client.set('timeout', 10000);
+client.set('maxDataSize', 5 * 1024 * 1024);
 
 export function test(url: URL.Url): boolean {
 	return url.hostname === 'www.amazon.com' ||
