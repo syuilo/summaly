@@ -52,10 +52,10 @@ export async function summarize(url: URL.Url): Promise<summary> {
 		$('meta[name="twitter:player:height"]').attr('content'));
 
 	return {
-		title: title || null,
+		title: title ? title.trim() : null,
 		icon: 'https://www.amazon.com/favicon.ico',
-		description: description || null,
-		thumbnail: thumbnail || null,
+		description: description ? description.trim() : null,
+		thumbnail: thumbnail ? thumbnail.trim() : null,
 		player: {
 			url: playerUrl || null,
 			width: playerWidth || null,
