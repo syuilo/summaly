@@ -1,3 +1,8 @@
+2.3.1 / 2019-09-02
+------------------
+* Fix amazon support
+* Update dependencies
+
 2.3.0 / 2019-06-18
 ------------------
 * Lang support
