@@ -8,6 +8,7 @@ client.set('headers', {
 });
 client.set('referer', false);
 client.set('timeout', 10000);
+client.set('maxDataSize', 5 * 1024 * 1024);
 
 export function test(url: URL.Url): boolean {
 	return url.hostname === 'www.amazon.com' ||
@@ -51,10 +52,10 @@ export async function summarize(url: URL.Url): Promise<summary> {
 		$('meta[name="twitter:player:height"]').attr('content'));
 
 	return {
-		title: title || null,
+		title: title ? title.trim() : null,
 		icon: 'https://www.amazon.com/favicon.ico',
-		description: description || null,
-		thumbnail: thumbnail || null,
+		description: description ? description.trim() : null,
+		thumbnail: thumbnail ? thumbnail.trim() : null,
 		player: {
 			url: playerUrl || null,
 			width: playerWidth || null,

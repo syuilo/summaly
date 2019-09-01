@@ -14,7 +14,7 @@ client.set('headers', {
 });
 client.set('referer', false);
 client.set('timeout', 10000);
-client.set('maxDataSize', 1024 * 1024);
+client.set('maxDataSize', 5 * 1024 * 1024);
 
 import Summary from './summary';
 
