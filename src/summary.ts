@@ -28,6 +28,11 @@ type Summary = {
 	 * The title of that web page
 	 */
 	title: string;
+
+	/**
+	 * Possibly sensitive
+	 */
+	sensitive?: boolean;
 };
 
 export default Summary;
