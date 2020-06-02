@@ -7,7 +7,7 @@ client.set('headers', {
 	'User-Agent': `SummalyBot/${version}`
 });
 client.set('referer', false);
-client.set('timeout', 20000);
+client.set('timeout', 10000);
 client.set('maxDataSize', 10 * 1024 * 1024);
 
 export function test(url: URL.Url): boolean {
