@@ -99,6 +99,8 @@ export default async (url: URL.Url, lang: string = null): Promise<Summary> => {
 		$('link[rel="icon"]').attr('href') ||
 		'/favicon.ico';
 
+	const sensitive = $('.tweet').attr('data-possibly-sensitive') === 'true'
+
 	const find = (path: string) => new Promise<string>(done => {
 		const target = URL.resolve(url.href, path);
 		request.head(target, (err, res) => {
@@ -148,6 +150,7 @@ export default async (url: URL.Url, lang: string = null): Promise<Summary> => {
 			width: playerWidth || null,
 			height: playerHeight || null
 		},
-		sitename: siteName || null
+		sitename: siteName || null,
+		sensitive,
 	};
 };
