@@ -4,11 +4,11 @@ import * as client from 'cheerio-httpcli';
 import summary from '../summary';
 
 client.set('headers', {
-  'User-Agent': `${name}/${version}`
+	'User-Agent': `SummalyBot/${version}`
 });
 client.set('referer', false);
 client.set('timeout', 10000);
-client.set('maxDataSize', 5 * 1024 * 1024);
+client.set('maxDataSize', 10 * 1024 * 1024);
 
 export function test(url: URL.Url): boolean {
 	return url.hostname === 'www.amazon.com' ||

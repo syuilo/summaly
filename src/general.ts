@@ -9,12 +9,14 @@ import { AllHtmlEntities } from 'html-entities';
 const entities = new AllHtmlEntities();
 
 import * as client from 'cheerio-httpcli';
+
+// 単一インスタンスなのでamazonと値を揃えないといけない
 client.set('headers', {
-  'User-Agent': `${name}/${version}`
+	'User-Agent': `SummalyBot/${version}`
 });
 client.set('referer', false);
 client.set('timeout', 10000);
-client.set('maxDataSize', 5 * 1024 * 1024);
+client.set('maxDataSize', 10 * 1024 * 1024);
 
 import Summary from './summary';
 
