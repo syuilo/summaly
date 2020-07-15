@@ -64,15 +64,18 @@ export default async (url: URL.Url, lang: string = null): Promise<Summary> => {
 
 	const playerUrl =
 		$('meta[property="twitter:player"]').attr('content') ||
-		$('meta[name="twitter:player"]').attr('content');
+		$('meta[name="twitter:player"]').attr('content') ||
+		$('meta[property="og:video"]').attr('content');
 
 	const playerWidth = parseInt(
 		$('meta[property="twitter:player:width"]').attr('content') ||
-		$('meta[name="twitter:player:width"]').attr('content'));
+		$('meta[name="twitter:player:width"]').attr('content') ||
+		$('meta[property="og:video:width"]').attr('content'));
 
 	const playerHeight = parseInt(
 		$('meta[property="twitter:player:height"]').attr('content') ||
-		$('meta[name="twitter:player:height"]').attr('content'));
+		$('meta[name="twitter:player:height"]').attr('content') ||
+		$('meta[property="og:video:height"]').attr('content'));
 
 	let description =
 		$('meta[property="og:description"]').attr('content') ||
