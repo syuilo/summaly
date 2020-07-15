@@ -1,27 +1,18 @@
-import { name, version } from '../package.json';
 import * as URL from 'url';
 import * as request from 'request';
-import nullOrEmpty from './utils/null-or-empty';
 import clip from './utils/clip';
 import cleanupTitle from './utils/cleanup-title';
 
 import { AllHtmlEntities } from 'html-entities';
 const entities = new AllHtmlEntities();
 
-import * as client from 'cheerio-httpcli';
-
-// 単一インスタンスなのでamazonと値を揃えないといけない
-client.set('headers', {
-	'User-Agent': `SummalyBot/${version}`
-});
-client.set('referer', false);
-client.set('timeout', 10000);
-client.set('maxDataSize', 10 * 1024 * 1024);
-
 import Summary from './summary';
+import { createInstance } from './client';
 
 export default async (url: URL.Url, lang: string = null): Promise<Summary> => {
 	if (lang && !lang.match(/^[\w-]+(\s*,\s*[\w-]+)*$/)) lang = null;
+
+	const client = createInstance();
 
 	client.set('headers', {
 		'Accept-Language': lang
