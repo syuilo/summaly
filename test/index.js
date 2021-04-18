@@ -155,3 +155,8 @@ describe('TwitterCard', () => {
 		});
 	});
 });
+
+it('Youtube', async () => {
+	const summary = await summaly('https://www.youtube.com/watch?v=pGThyI5YCUU')
+	console.log(summary)
+});
