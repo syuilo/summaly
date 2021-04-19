@@ -10,22 +10,21 @@ const entities = new AllHtmlEntities();
 
 import * as client from 'cheerio-httpcli';
 
-// 単一インスタンスなのでamazonと値を揃えないといけない
-client.set('headers', {
-	'User-Agent': `SummalyBot/${version}`
-});
-client.set('referer', false);
-client.set('timeout', 10000);
-client.set('maxDataSize', 10 * 1024 * 1024);
-
 import Summary from './summary';
 
 export default async (url: URL.Url, lang: string = null): Promise<Summary> => {
 	if (lang && !lang.match(/^[\w-]+(\s*,\s*[\w-]+)*$/)) lang = null;
 
+	// reset to clear cookies
+	client.reset()
+	// 単一インスタンスなのでamazonと値を揃えないといけない
 	client.set('headers', {
+		'User-Agent': `SummalyBot/${version}`,
 		'Accept-Language': lang
 	});
+	client.set('referer', false);
+	client.set('timeout', 10000);
+	client.set('maxDataSize', 10 * 1024 * 1024);
 
 	const res = await client.fetch(url.href);
 
