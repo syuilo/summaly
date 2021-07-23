@@ -1,14 +1,6 @@
-import { name, version } from '../../package.json';
 import * as URL from 'url';
-import * as client from 'cheerio-httpcli';
+import { createInstance } from '../client';
 import summary from '../summary';
-
-client.set('headers', {
-	'User-Agent': `SummalyBot/${version}`
-});
-client.set('referer', false);
-client.set('timeout', 10000);
-client.set('maxDataSize', 10 * 1024 * 1024);
 
 export function test(url: URL.Url): boolean {
 	return url.hostname === 'www.amazon.com' ||
@@ -28,6 +20,8 @@ export function test(url: URL.Url): boolean {
 }
 
 export async function summarize(url: URL.Url): Promise<summary> {
+	const client = createInstance();
+
 	const res = await client.fetch(url.href);
 	const $ = res.$;
 
