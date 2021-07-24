@@ -4,8 +4,7 @@ import nullOrEmpty from './utils/null-or-empty';
 import clip from './utils/clip';
 import cleanupTitle from './utils/cleanup-title';
 
-import { AllHtmlEntities } from 'html-entities';
-const entities = new AllHtmlEntities();
+import { decode as decodeHtml } from 'html-entities';
 
 import { createInstance } from './client';
 import Summary from './summary';
@@ -43,7 +42,7 @@ export default async (url: URL.Url, lang: string = null): Promise<Summary> => {
 		return null;
 	}
 
-	title = clip(entities.decode(title), 100);
+	title = clip(decodeHtml(title), 100);
 
 	let image =
 		$('meta[property="og:image"]').attr('content') ||
@@ -72,7 +71,7 @@ export default async (url: URL.Url, lang: string = null): Promise<Summary> => {
 		$('meta[name="description"]').attr('content');
 
 	description = description
-		? clip(entities.decode(description), 300)
+		? clip(decodeHtml(description), 300)
 		: null;
 
 	if (title === description) {
@@ -84,7 +83,7 @@ export default async (url: URL.Url, lang: string = null): Promise<Summary> => {
 		$('meta[name="application-name"]').attr('content') ||
 		url.hostname;
 
-	siteName = siteName ? entities.decode(siteName) : null;
+	siteName = siteName ? decodeHtml(siteName) : null;
 
 	const favicon =
 		$('link[rel="shortcut icon"]').attr('href') ||
