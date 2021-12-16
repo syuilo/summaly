@@ -15,13 +15,14 @@ const OPERATION_TIMEOUT = 60 * 1000;
 const MAX_RESPONSE_SIZE = 10 * 1024 * 1024;
 const BOT_UA = `SummalyBot/${version}`;
 
-export async function scpaping(url: string) {
+export async function scpaping(url: string, opts?: { lang?: string }) {
 	const response = await getResponse({
 		url,
 		method: 'GET',
 		headers: {
 			'accept': 'text/html',
 			'user-agent': BOT_UA,
+			'accept-language': opts?.lang
 		},
 		typeFilter: /^text\/html/,
 	});
