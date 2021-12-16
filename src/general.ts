@@ -1,36 +1,14 @@
 import * as URL from 'url';
-import * as request from 'request';
-import nullOrEmpty from './utils/null-or-empty';
 import clip from './utils/clip';
 import cleanupTitle from './utils/cleanup-title';
 
 import { decode as decodeHtml } from 'html-entities';
 
-import { createInstance } from './client';
+import { head, scpaping } from './utils/got';
 import Summary from './summary';
 
-export default async (url: URL.Url, lang: string = null): Promise<Summary> => {
-	if (lang && !lang.match(/^[\w-]+(\s*,\s*[\w-]+)*$/)) lang = null;
-
-	const client = createInstance();
-
-	client.set('headers', {
-		'Accept-Language': lang
-	});
-
-	const res = await client.fetch(url.href);
-
-	if (res.error) {
-		throw 'something happened';
-	}
-
-	const contentType: string = res.response.headers['content-type'];
-
-	// HTMLじゃなかった場合は中止
-	if (contentType.indexOf('text/html') === -1) {
-		return null;
-	}
-
+export default async (url: URL.Url): Promise<Summary> => {
+	const res = await scpaping(url.href);
 	const $ = res.$;
 
 	let title =
@@ -92,18 +70,11 @@ export default async (url: URL.Url, lang: string = null): Promise<Summary> => {
 
 	const sensitive = $('.tweet').attr('data-possibly-sensitive') === 'true'
 
-	const find = (path: string) => new Promise<string>(done => {
+	const find = async (path: string) => {
 		const target = URL.resolve(url.href, path);
-		request.head(target, (err, res) => {
-			if (err) {
-				done(null);
-			} else if (res.statusCode == 200) {
-				done(target);
-			} else {
-				done(null);
-			}
-		});
-	});
+		const res = await head(target);
+		return res.statusCode === 200 ? target : null;
+	};
 
 	// 相対的なURL (ex. test) を絶対的 (ex. /test) に変換
 	const toAbsolute = (relativeURLString: string): string => {

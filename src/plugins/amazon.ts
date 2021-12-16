@@ -1,5 +1,5 @@
 import * as URL from 'url';
-import { createInstance } from '../client';
+import { scpaping } from '../utils/got';
 import summary from '../summary';
 
 export function test(url: URL.Url): boolean {
@@ -20,9 +20,7 @@ export function test(url: URL.Url): boolean {
 }
 
 export async function summarize(url: URL.Url): Promise<summary> {
-	const client = createInstance();
-
-	const res = await client.fetch(url.href);
+	const res = await scpaping(url.href);
 	const $ = res.$;
 
 	const title = $('#title').text();

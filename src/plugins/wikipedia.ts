@@ -1,5 +1,5 @@
 import * as URL from 'url';
-import * as request from 'request-promise-native';
+import { get } from '../utils/got';
 import * as debug from 'debug';
 import summary from '../summary';
 import clip from './../utils/clip';
@@ -19,7 +19,7 @@ export async function summarize(url: URL.Url): Promise<summary> {
 	log(`title is ${title}`);
 	log(`endpoint is ${endpoint}`);
 
-	let body = await request(endpoint);
+	let body = await get(endpoint) as any;
 	body = JSON.parse(body);
 	log(body);
 
