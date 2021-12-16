@@ -8,6 +8,8 @@ import { head, scpaping } from './utils/got';
 import Summary from './summary';
 
 export default async (url: URL.Url, lang: string = null): Promise<Summary> => {
+	if (lang && !lang.match(/^[\w-]+(\s*,\s*[\w-]+)*$/)) lang = null;
+
 	const res = await scpaping(url.href, { lang: lang || undefined });
 	const $ = res.$;
 
