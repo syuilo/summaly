@@ -74,8 +74,12 @@ export default async (url: URL.Url, lang: string = null): Promise<Summary> => {
 
 	const find = async (path: string) => {
 		const target = URL.resolve(url.href, path);
-		const res = await head(target);
-		return res.statusCode === 200 ? target : null;
+		try {
+			await head(target);
+			return target;
+		} catch (e) {
+			return null;
+		}
 	};
 
 	// 相対的なURL (ex. test) を絶対的 (ex. /test) に変換

@@ -1,5 +1,3 @@
-import * as stream from 'stream';
-import * as util from 'util';
 import { version } from '../../package.json';
 import got, * as Got from 'got';
 import { StatusError } from './status-error';
@@ -7,14 +5,12 @@ import { detectEncoding, toUtf8 } from './encoding';
 import * as cheerio from 'cheerio';
 const PrivateIp = require('private-ip');
 
-const pipeline = util.promisify(stream.pipeline);
-
 const RESPONSE_TIMEOUT = 20 * 1000;
 const OPERATION_TIMEOUT = 60 * 1000;
 const MAX_RESPONSE_SIZE = 10 * 1024 * 1024;
 const BOT_UA = `SummalyBot/${version}`;
 
-export async function scpaping(url: string, opts?: { lang?: string }) {
+export async function scpaping(url: string, opts?: { lang?: string; }) {
 	const response = await getResponse({
 		url,
 		method: 'GET',
@@ -26,7 +22,10 @@ export async function scpaping(url: string, opts?: { lang?: string }) {
 		typeFilter: /^text\/html/,
 	});
 
-	if (response.ip && PrivateIp(response.ip)) {
+	// テスト用
+	const allowPrivateIp = process.env.SUMMALY_ALLOW_PRIVATE_IP === 'true';
+
+	if (!allowPrivateIp && response.ip && PrivateIp(response.ip)) {
 		throw new StatusError(`Private IP rejected ${response.ip}`, 400, 'Private IP Rejected');
 	}
 

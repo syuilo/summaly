@@ -16,6 +16,7 @@ Error.stackTraceLimit = Infinity;
 
 // During the test the env variable is set to test
 process.env.NODE_ENV = 'test';
+process.env.SUMMALY_ALLOW_PRIVATE_IP = 'true';
 
 // Display detail of unhandled promise rejection
 process.on('unhandledRejection', console.dir);
@@ -65,6 +66,27 @@ it('titleがcleanupされる', done => {
 		const summary = await summaly(host);
 		assert.equal(summary.title, 'Strawberry Pasta');
 		done();
+	});
+});
+
+describe('Private IP blocking', () => {
+	before(() => {
+		process.env.SUMMALY_ALLOW_PRIVATE_IP = 'false';
+	});
+
+	it('private ipなサーバーの情報を取得できない', done => {
+		const app = express();
+		app.get('/', (req, res) => {
+			res.sendFile(__dirname + '/htmls/og-title.html');
+		});
+		server = app.listen(port, async () => {
+			await assert.rejects(async () => await summaly(host));
+			done();
+		});
+	});
+
+	after(() => {
+		process.env.SUMMALY_ALLOW_PRIVATE_IP = 'true';
 	});
 });
 
