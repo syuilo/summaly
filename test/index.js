@@ -176,4 +176,41 @@ describe('TwitterCard', () => {
 			done();
 		});
 	});
+
+	it('Player detection - PeerTube:video => video', done => {
+		const app = express();
+		app.get('/', (req, res) => {
+			res.sendFile(__dirname + '/htmls/player-peertube-video.html');
+		});
+		server = app.listen(port, async () => {
+			const summary = await summaly(host);
+			assert.equal(summary.player.url, 'https://example.com/embedurl');
+			done();
+		});
+	});
+
+	it('Player detection - Pleroma:video => video', done => {
+		const app = express();
+		app.get('/', (req, res) => {
+			res.sendFile(__dirname + '/htmls/player-pleroma-video.html');
+		});
+		server = app.listen(port, async () => {
+			const summary = await summaly(host);
+			assert.equal(summary.player.url, 'https://example.com/embedurl');
+			done();
+		});
+	});
+
+	it('Player detection - Pleroma:image => image', done => {
+		const app = express();
+		app.get('/', (req, res) => {
+			res.sendFile(__dirname + '/htmls/player-pleroma-image.html');
+		});
+		server = app.listen(port, async () => {
+			const summary = await summaly(host);
+			assert.equal(summary.player.url, null);
+			done();
+		});
+	});
+
 });
