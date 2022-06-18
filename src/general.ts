@@ -12,6 +12,7 @@ export default async (url: URL.Url, lang: string = null): Promise<Summary> => {
 
 	const res = await scpaping(url.href, { lang: lang || undefined });
 	const $ = res.$;
+	const twitterCard = $('meta[property="twitter:card"]').attr('content');
 
 	let title =
 		$('meta[property="og:title"]').attr('content') ||
@@ -34,16 +35,23 @@ export default async (url: URL.Url, lang: string = null): Promise<Summary> => {
 	image = image ? URL.resolve(url.href, image) : null;
 
 	const playerUrl =
-		$('meta[property="twitter:player"]').attr('content') ||
-		$('meta[name="twitter:player"]').attr('content');
+		(twitterCard !== 'summary_large_image' && $('meta[property="twitter:player"]').attr('content')) ||
+		(twitterCard !== 'summary_large_image' && $('meta[name="twitter:player"]').attr('content')) ||
+		$('meta[property="og:video"]').attr('content') ||
+		$('meta[property="og:video:secure_url"]').attr('content') ||
+		$('meta[property="og:video:url"]').attr('content');
 
 	const playerWidth = parseInt(
 		$('meta[property="twitter:player:width"]').attr('content') ||
-		$('meta[name="twitter:player:width"]').attr('content'));
+		$('meta[name="twitter:player:width"]').attr('content') ||
+		$('meta[property="og:video:width"]').attr('content') ||
+		'');
 
 	const playerHeight = parseInt(
 		$('meta[property="twitter:player:height"]').attr('content') ||
-		$('meta[name="twitter:player:height"]').attr('content'));
+		$('meta[name="twitter:player:height"]').attr('content') ||
+		$('meta[property="og:video:height"]').attr('content') ||
+		'');
 
 	let description =
 		$('meta[property="og:description"]').attr('content') ||
@@ -115,8 +123,8 @@ export default async (url: URL.Url, lang: string = null): Promise<Summary> => {
 		thumbnail: image || null,
 		player: {
 			url: playerUrl || null,
-			width: playerWidth || null,
-			height: playerHeight || null
+			width: Number.isNaN(playerWidth) ? null : playerWidth,
+			height: Number.isNaN(playerHeight) ? null : playerHeight
 		},
 		sitename: siteName || null,
 		sensitive,
