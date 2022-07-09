@@ -1,3 +1,8 @@
+2.7.0 / 2022-07-09
+------------------
+* accept XHTML
+* update got to 11.8.5
+
 2.6.0 / 2022-06-18
 ------------------
 * Improve player detection
