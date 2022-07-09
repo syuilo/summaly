@@ -15,11 +15,11 @@ export async function scpaping(url: string, opts?: { lang?: string; }) {
 		url,
 		method: 'GET',
 		headers: {
-			'accept': 'text/html',
+			'accept': 'text/html,application/xhtml+xml',
 			'user-agent': BOT_UA,
 			'accept-language': opts?.lang
 		},
-		typeFilter: /^text\/html/,
+		typeFilter: /^(text\/html|application\/xhtml\+xml)/,
 	});
 
 	// テスト用
